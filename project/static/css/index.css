@@ -1,0 +1,187 @@
+* {margin:0;padding:0;list-style:none;}
+body {background:#eee;font-size:16px;font-family: "Microsoft Yahei";}
+body,html{height:100%;}
+body{overflow: auto;}
+input {border:0 none;outline:none;}
+a,a:hover {text-decoration:none;}
+.left {display:inline;float:left;}
+.right {display:inline;float:right;}
+.clearfix:after {clear:both;content:'.';display:block;width: 0;height: 0;visibility:hidden;}
+.clearfix {zoom:1;}
+
+.box{width:100%;height:88px;background: #fff;}
+.box1{width:1200px;height:480px;margin:0 auto;position: relative;background-size:100% 100%;}
+.login_logo{width:1200px;height:88px;margin:0 auto;background:#fff url(./../img/indexlogo.png) 0 center no-repeat;}
+.login {width:100%;height:480px;margin:0px auto 0;background:url(./../img/loginimg.png) ;background-size:100% 100%;}
+.login .form_box {position:relative;width:400px;height:300px;border:1px solid #ddd;border-radius: 6px;top:60px;left:583px;}
+.login .QR_code {position:absolute;width:120px;height:160px;border:1px solid #ddd;border-radius: 6px;top:60px;left:1000px;background:#fff;}
+.QR_code img{margin:10px 11px 5px 11px;}
+.QR_code p{font-size:12px;text-align: center;color:#666;}
+.login_form {position:absolute;left:40px;top:30px;z-index:2;}
+.login_mask {position:absolute;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background:#fff;opacity:0.8;z-index:1;border-radius:3px;-webkit-border-radius:3px;-moz-border-radius:3px;}
+.login .form_box label {color:#aaa;padding-bottom:10px;}
+.login .form_box input[type="text"],.login .form_box input[type="password"] {width:250px;height:38px;border:1px solid #ddd;background: #fff;border-radius:4px;padding-left:50px;line-height:38px;}
+.login .user_input {margin-bottom:26px;}
+.login .input_fill {position:relative;}
+.login .input_fill span {position:absolute;left:16px;bottom:10px;width:15px;height:19px;}
+.login .input_fill input.active {border:1px solid #0082dd;}
+
+/*.user_icon {background:url(./../../static/img/icon3.png) no-repeat;}
+.password_icon {background:url(./../../static/img/icon.png) no-repeat;}
+.login .user_input .user_icon.active {background:url(./../../static/img/icon4.png) no-repeat;}
+.login .password_input .password_icon.active {background:url(./../../static/img/icon2.png) no-repeat;}*/
+
+.login .form_box input[type="button"] {width:100%;height:40px;background:#0082dd;color:#fff;font-size:16px;border-radius:4px;cursor: pointer;}
+.login .password_input {margin-bottom:40px;}
+.login_form p{font-size:16px;text-align: center;margin-bottom:30px;}
+.login-massage {color: #fff;font-size: 24px;position: absolute;top: 80px;left: 140px;}
+
+.header {width:100%;height:88px;background:#fff;}
+/*.header h3 {width:1200px;height:88px;margin:0 auto;background:url(../../../../src/assets/index_logo.png) 0 center no-repeat;}*/
+.container1 {background:#eee;padding-top:20px;}
+.classify {width:1200px;height:60px;background:#fff;margin:0 auto 10px;padding-right:80px;}
+.classify .list a {display:inline;float:left;width:240px;height:60px;line-height:60px;text-align:center;font-size:18px;color:#666;border-right:1px solid #ccc;}
+.classify .list a.active {background: #42a2d8;color:#fff;}
+
+.user_operate {position:relative;cursor:pointer;}
+.user_operate .username {display: inline-block;height:60px;line-height:60px;padding-right:27px;font-size:18px;color:#666;}
+.user_operate .icon_down {position:absolute;right:0;top:0;width:17px;height:100%;background:url(../image/icon_down.png) 0 center no-repeat; }
+.user_operate .operate {display:none;position:absolute;top:60px;right:0;width:100px;border:1px solid #ddd;border-bottom:none;background:#fff;}
+.user_operate .operate.active {display:block;}
+.user_operate .operate li {height:34px;line-height:34px;text-align:center;border-bottom: 1px solid #ccc;}
+.user_operate .operate li:hover {background:#ccc;color:#fff;}
+
+.content {width:1200px;background:#fff;margin:0 auto;padding:24px 30px;}
+.title_text {padding-left:30px;height:49px;line-height:49px;font-size:18px;color:#333;background:#f3f5fa;font-weight: normal;border-bottom:1px solid #ddd;}
+/* 总数统计*/
+.total_statistical {width:318px;height:318px;border:1px solid #ddd;margin-bottom:20px;}
+.total_statistical .account_list {padding:0 30px;color:#666;font-size:18px;}
+.total_statistical .account_list li {position:relative;height:30px;padding-top:25px;border-bottom:1px solid #ddd;}
+.total_statistical .account_list li:last-child {border-bottom:none;}
+.account_list li span {vertical-align: bottom;}
+.total_statistical .account_list .num {position:absolute;right:0;top:8px;font-size:36px;}
+
+/* 用户年龄及性别组成*/
+.age_sex {width:318px;height:398px;border:1px solid #ddd;}
+.progress {width:260px; height: 16px; margin:0 auto 20px; overflow: hidden; background-color: #ddd; border-radius: 4px; -webkit-box-shadow: inset 0 1px 2px #ddd; box-shadow: inset 0 1px 2px #ddd; }
+.progress-bar-man {background-color: #00bb34;}
+.progress-bar-woman {background-color: #fec25b;}
+.progress-striped .progress-bar, .progress-bar-striped {
+    background-image: -webkit-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: -o-linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
+    background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);  -webkit-background-size: 40px 40px; background-size: 40px 40px;}
+.progress-bar {float: left;width: 0;height: 100%;font-size: 12px;line-height: 16px;color: #fff; text-align: center; -webkit-box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);box-shadow: inset 0 -1px 0 rgba(0,0,0,.15);-webkit-transition: width .6s ease;-o-transition: width .6s ease;transition: width .6s ease;  }
+.age_sex .sex_num {padding-left:30px;font-size:18px;line-height:28px;}
+.age_sex .male {color:#00bb34;}
+.age_sex .madam {color:#fec25b;}
+/* 当日异常数据统计*/
+.abnormal_account {width:780px;height:738px;border:1px solid #ddd;}
+.abnormal_account .classify_list {margin-top:10px;background:#f3f5fa;}
+.abnormal_account .classify_title {background:#f3f5fa;border-bottom:1px solid #ddd;}
+.abnormal_account .classify_title li {display:inline;float:left;width:259px;height:49px;line-height:49px;text-align:center;font-size:18px;color:#333;border-right:1px solid #ddd;cursor:pointer;}
+.abnormal_account .classify_title li:last-child {border-right:none;}
+.abnormal_account .classify_title li.active {background: #55c7f6;color:#fff;}
+.table_list table {width:100%;color:#666;border-collapse:collapse;border-spacing:0;border:1px solid #ddd; }
+.table_list table tr th {height:39px;line-height:39px;text-align:center;color:#999;font-weight:normal;border-bottom:1px solid #ddd;background:#fff;}
+.table_list table tr td {height:43px;line-height:43px;text-align:center;border-bottom:1px solid #ddd;}
+.table_list table tr:nth-child(odd){background:#f3f5fa;}
+.table_list table tr:nth-child(even){background:#fff;}
+.table_list table .data_detail {color:#55c7f6;}
+.page_detail {position:relative;overflow:hidden;}
+.paging{position:relative;padding:14px 24px 19px 46px;}
+#laypage,#laypage_user,.page_count {position:relative; overflow:hidden;}
+#laypage,#laypage_user {float:right;}
+.page_count {float:left;color:#999;}
+.paging .laypage_main a {color:#57c7f6;margin:0;font-size:14px;border:1px solid #ddd;border-left:none;}
+.paging .laypageskin_default span {border:1px solid #ddd;border-left:none;height:26px;line-height:24px;font-size:14px;color:#999;margin:0;background: #fff;}
+.paging .laypage_main .laypage_prev,.paging .laypageskin_default span:first-child {border-left:1px solid #ddd;}
+.paging .laypageskin_default .laypage_curr {background:#57c7f6;color:#fff;}
+
+
+.num_search {height:58px;line-height:58px;border:1px solid #ddd;padding:0 30px;background:#f3f5fa;margin-bottom:10px;}
+.num_search .user_manage_num {color:#666;font-size:18px;}
+.search_box {position:relative;}
+.search_box .search_input {width:314px;height:30px;border:1px solid #ddd;padding-left:4px;border-radius:4px;}
+.search_box .search_icon {position:absolute;left:50%;top:0;width:50px;height:30px;line-height:30px;padding-left:24px;margin-left:-37px;margin-top:15px;background:url(image/search.png) 0 center no-repeat;font-size:14px;color:#999;}
+.search_box .search_btn {position:absolute;top:15px;right:0px;width:60px;height:32px;background:url(image/query_btn.jpeg) no-repeat;cursor:pointer;border-radius:0 6px 6px 0;}
+
+
+
+.cont2 {margin:40px 0;}
+.document_link {color:#57c7f6;padding-right:30px;}
+.document_link .point {padding-right:10px;}
+.blood_pressure_data .classify_blood {width:558px;height:478px;border:1px solid #ddd;}
+.conclusion {margin-top:40px;padding:0 30px;}
+.conclusion h5 {text-align:center;color:#333;height:36px;line-height:36px;}
+.conclusion p {font-size:14px;color:#666;}
+.indicators_show .pwv,.indicators_show .brain_death {width:558px;height:678px;border:1px solid #ddd;margin:40px 0;}
+.indicators_show .anb,.indicators_show .heart_rate {width:558px;height:478px;border:1px solid #ddd;}
+.tip_icon {display:inline-block;position:relative;width:23px;height:22px;background: url(../image/query.png) no-repeat;vertical-align: middle;margin-left:20px;cursor:pointer;}
+.tip_icon .tip_box {display:none;position:absolute;left:24px;bottom:20px;width:280px;padding:18px;}
+.tip_icon .tip_box.active {display:block;}
+.tip_icon .tip_shadow {position:absolute;left:0;top:0;width:316px;height:100%;background:#000;opacity: 0.6;z-index:1;}
+.tip_icon .tip_des {position:relative;z-index:2;color:#fff;line-height:24px;}
+
+.chronic_disease_element {width:358px;height:838px;border:1px solid #ddd;}
+.step_statistical {width:738px;height:438px;border:1px solid #ddd;margin-bottom:40px;}
+.health_condition  {width:738px;height:358px;border:1px solid #ddd;}
+.element_list {padding:30px 30px 0 30px;}
+.element_list li {height:48px;line-height:48px;border-bottom:1px solid #ddd;color:#666;}
+.element_list li:last-child {border-bottom:none;}
+.ele_title,.ele_progress,.ele_percent {display:inline;float:left;}
+.ele_title {width:108px;}
+.ele_percent {float:right;}
+.element_list .ele_progress {width:130px;height:16px;margin:0;margin-top:16px;}
+.element_list .ele_progress .progress-bar {background: #fec25d;}
+
+.bmi {height:478px;border:1px solid #ddd;margin:40px 0;}
+
+
+.active_user {height:558px;border:1px solid #ddd;}
+.user_title_line {position:relative;height:50px;line-height:50px;background: #f3f5fa;}
+.user_title_line .title,.user_title_line .time_list {display:inline-block;}
+.user_title_line .title {padding:0 30px 0 40px;vertical-align: top;}
+.user_title_line .time_list li {display:inline;float:left;width:160px;text-align:center;border-right:1px solid #ddd;cursor:pointer;}
+.user_title_line .time_list li:first-child {border-left:1px solid #ddd;}
+.user_title_line .time_list li.active {background: #55c7f6;color:#fff;}
+.user_title_line .tip_icon {position:absolute;right:30px;top:14px;}
+.user_title_line .tip_icon .tip_box {left:initial;right:24px;}
+
+.classify_goal li {display:inline;float:left;width:20%;text-align:center;font-size:14px;color:#333;}
+.classify_goal li .grad {display:inline-block;background:#ccc;border-radius:10px;padding:2px 8px;font-size:14px;color:#fff;margin-top:20px;}
+.classify_goal li:nth-child(1) .grad,.classify_goal li:nth-child(3) .grad,.classify_goal li:nth-child(4) .grad  {background:#fec35e;}
+.classify_goal li:nth-child(2) .grad{background:#57ee88;}
+.classify_goal li:nth-child(5) .grad {background:#faa09d;}
+.bmi .conclusion  {padding-left:90px;}
+
+.using_periods {height:478px;border:1px solid #ddd;margin-top:40px;}
+
+
+
+.page_cont {display:none;}
+.page_cont.active {display:block;}
+
+.num_search {height:58px;line-height:58px;border:1px solid #ddd;padding:0 30px;background:#f3f5fa;margin-bottom:10px;}
+.num_search .user_manage_num {color:#666;font-size:18px;}
+.search_box {position:relative;}
+.search_box .search_input {width:314px;height:30px;border:1px solid #ddd;padding-left:4px;border-radius:4px;}
+.search_box .search_icon {position:absolute;left:50%;top:0;width:50px;height:30px;line-height:30px;padding-left:24px;margin-left:-37px;margin-top:15px;background:url(../image/search.png) 0 center no-repeat;font-size:14px;color:#999;}
+.search_box .close {display:none;position:absolute;top:23px;right:10px;width:15px;height:15px;background:url(../image/close.png) no-repeat;cursor:pointer;}
+
+.data_title {white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+span.colorArea {display: inline-block;width: 21px;border-radius: 3px;height: 16px;margin-right: 5px;}
+.colorArea.blue{background: #00CBFB;}
+.colorArea.green{background: #00bb34;}
+.colorArea.orange{background: #fec25b;}
+.colorArea.red{background: #f66;}
+#ecg_download{ font-size:16px;color:#999;position:absolute;top:16px;right:82px; padding-left:27px;cursor: pointer;z-index:1000;}
+#bio_download{ font-size:16px;color:#999;position:absolute;top:357px;right:82px; padding-left:27px; cursor: pointer;z-index:1000;}
+.modal_table {font-size:14px;}
+.modal_table tr th {font-weight: normal;}
+.modal_table tr {height:24px;}
+ #myModal,#myModal2{overflow: auto;}
+.shadow {display:none;position:fixed;left:0;top:0;right:0;bottom:0;width:100%;height:100%;background:#000;opacity:0.7;}
+#myModalLabel2 {color:#55c7f6;line-height:3;font-weight:bold;}
+
+.layui-layer-default .layui-layer-title{background:#42a2d8;color:#fff;border:none}.layui-layer-default .layui-layer-btn a{background:#42a2d8}
+.layui-layer-default .layui-layer-btn {text-align:center;}
