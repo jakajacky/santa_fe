@@ -25,7 +25,7 @@
     	            </div>
     	            </form>
     	            <div>
-    	                <input type="button" v-on:mousedown='loginBtnDidClicked' v-on:mouseup='loginBtnDidMouseup' :class="didClicked ? 'sign_up_clicked' : 'sign_up'" value="登录" />
+    	                <input type="button" v-on:mousedown='loginBtnDidClicked' v-on:mouseup='loginBtnDidMouseup' v-bind:class="{'selected' : didClicked}" value="登录" />
     	            </div>
     	        </div>
     	        <div class="login_mask"></div>
@@ -44,6 +44,7 @@
 <script>
 import App from './App.vue'
 import reques from './request/Request.vue'
+import axios from 'axios'
 export default {
   name: 'app',
   data () {
@@ -71,6 +72,13 @@ export default {
                 fields: this.content_pwd
             }
       reques.fetch('/energon-new/web/research/partnerlogin', data);
+      // axios.get("https://api.douban.com/v2/movie/top250?count=10")
+      // .then(function (response) {
+      //   console.log(response);
+      // })
+      // .catch(function (error) {
+      //   console.log(error);
+      // });
     },
     loginBtnDidMouseup:function() {
       console.log('mouseup');
@@ -123,26 +131,6 @@ export default {
 }
 h1, h2 {
   font-weight: normal;
-}
-
-.sign_up {
-  width:100%;
-  height:40px;
-  background:#0082dd;
-  color:#fff;
-  font-size:16px;
-  border-radius:4px;
-  cursor: pointer;
-}
-
-.sign_up_clicked {
-  width:100%;
-  height:40px;
-  color:#fff;
-  font-size:16px;
-  border-radius:4px;
-  cursor: pointer;
-  background: gray;
 }
 
 .login .form_box .name {
