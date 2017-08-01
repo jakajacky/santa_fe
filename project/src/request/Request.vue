@@ -30,7 +30,8 @@ axios.defaults.baseURL = location.protocol+'//'+location.hostname;   //配置接
 //返回状态判断(添加响应拦截器)
 axios.interceptors.response.use((res) =>{
 	//对响应数据做些事
-    if(!res.data.success){
+	// 根据数据特征来定义，并不特定
+    if(res.data.code != 10000){
         // _.toast(res.data.msg);
         return Promise.reject(res);
     }
@@ -44,13 +45,11 @@ axios.interceptors.response.use((res) =>{
 export default {
   fetch:function(url,params) {
     return new Promise((resolve,reject) => {
-      axios.post(url, params)
-        .then(response => {
+      axios.post(url, params).then(response => {
+				console.log(response.data);
           resolve(response.data);
-        }, err => {
-          reject(err);
-        })
-        .catch((error) => {
+        }).catch(error => {
+					console.log(error);
           reject(error);
         })
     })

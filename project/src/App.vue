@@ -71,14 +71,14 @@ export default {
                 user_id: this.content_name,
                 fields: this.content_pwd
             }
-      reques.fetch('/energon-new/web/research/partnerlogin', data);
-      // axios.get("https://api.douban.com/v2/movie/top250?count=10")
-      // .then(function (response) {
-      //   console.log(response);
-      // })
-      // .catch(function (error) {
-      //   console.log(error);
-      // });
+      reques.fetch('/energon-new/web/research/partnerlogin', data)
+        // .then(res => {
+        //   console.log('success:'+res);
+        // })
+        // .catch(error => {
+        //   console.log('fail:'+error);
+        // })
+
     },
     loginBtnDidMouseup:function() {
       console.log('mouseup');
