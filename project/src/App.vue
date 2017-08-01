@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <el-alert id='tip' :title="tip_msg" type="error" show-icon v-if="isTip"></el-alert>
+    <el-alert id='tip' :title="tip_msg" type="error" show-icon v-if="isTip" v-on:close="closeAlert"></el-alert>
     <div class="login_logo">
 
     </div>
@@ -90,6 +90,10 @@ export default {
         })
 
     },
+    closeAlert:function() {
+      console.log('closeAlert');
+      this.isTip = false;
+    },
     loginBtnDidMouseup:function() {
       console.log('mouseup');
       this.didClicked = false
@@ -114,12 +118,15 @@ export default {
         this.isTip = false;
       }
     },
+    // 密码框获得焦点
     passwordFoucs:function() {
       this.passwordfoucs = true;
     },
+    // 密码框失去焦点
     passwordBlur:function() {
       this.passwordfoucs = false;
     },
+    // 验证手机号
     checkPhone:function(content){
       // var phone = document.getElementById('phone').value;
       if(!(/^1[34578]\d{9}$/.test(content))) {
