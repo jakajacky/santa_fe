@@ -31,10 +31,10 @@ axios.defaults.baseURL = location.protocol+'//'+location.hostname;   //配置接
 axios.interceptors.response.use((res) =>{
 	//对响应数据做些事
 	// 根据数据特征来定义，并不特定
-    if(res.data.code != 10000){
-        // _.toast(res.data.msg);
-        return Promise.reject(res);
-    }
+    // if(res.data.code != 10000){
+    //     // _.toast(res.data.msg);
+    //     return Promise.reject(res);
+    // }
     return res;
 }, (error) => {
     // _.toast("网络异常", 'fail');
@@ -45,10 +45,12 @@ axios.interceptors.response.use((res) =>{
 export default {
   fetch:function(url,params) {
     return new Promise((resolve,reject) => {
-      axios.post(url, params).then(response => {
-				console.log(response.data);
+      axios.post(url, params)
+				.then(response => {
+					console.log(response.data);
           resolve(response.data);
-        }).catch(error => {
+        })
+				.catch(error => {
 					console.log(error);
           reject(error);
         })

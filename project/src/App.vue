@@ -75,18 +75,24 @@ export default {
         .then(res => {
           console.log('success:'+res);
           if (res.code != 10000) {
-            this.isTip = true;
-            this.tip_msg = res.msg;
+            this.$message({
+              message:res.msg,
+              type:'warning'
+            });
           }
           else {
-            this.isTip = true;
-            this.tip_msg = '登录成功';
+            this.$message({
+              message:'登录成功',
+              type:'success'
+          });
           }
         })
         .catch(error => {
           console.log('fail:'+error);
-          this.isTip = true;
-          this.tip_msg = error.data.msg;
+          this.$message({
+            message:error.message,
+            type:'error'
+          });
         })
 
     },
