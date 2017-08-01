@@ -25,7 +25,7 @@
     	            </div>
     	            </form>
     	            <div>
-    	                <input type="button" v-on:mousedown='loginBtnDidClicked' v-on:mouseup='loginBtnDidMouseup' v-bind:class="{'selected' : didClicked}" value="登录" />
+    	                <input type="button" v-on:mousedown='loginBtnDidClicked' v-on:mouseup='loginBtnDidMouseup' v-on:mouseout='loginBtnDidMouseout' v-bind:class="{'selected' : didClicked}" value="登录" />
     	            </div>
     	        </div>
     	        <div class="login_mask"></div>
@@ -72,17 +72,31 @@ export default {
                 fields: this.content_pwd
             }
       reques.fetch('/energon-new/web/research/partnerlogin', data)
-        // .then(res => {
-        //   console.log('success:'+res);
-        // })
-        // .catch(error => {
-        //   console.log('fail:'+error);
-        // })
+        .then(res => {
+          console.log('success:'+res);
+          if (res.code != 10000) {
+            this.isTip = true;
+            this.tip_msg = res.msg;
+          }
+          else {
+            this.isTip = true;
+            this.tip_msg = '登录成功';
+          }
+        })
+        .catch(error => {
+          console.log('fail:'+error);
+          this.isTip = true;
+          this.tip_msg = error.data.msg;
+        })
 
     },
     loginBtnDidMouseup:function() {
       console.log('mouseup');
       this.didClicked = false
+    },
+    loginBtnDidMouseout:function() {
+      console.log('mouseout');
+      this.didClicked = false;
     },
     //获得焦点
     nameFoucs:function() {
