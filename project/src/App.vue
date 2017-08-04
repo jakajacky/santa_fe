@@ -37,7 +37,6 @@
     	    </div>
         </div>
     </div>
-
   </div>
 </template>
 
@@ -45,6 +44,8 @@
 import App from './App.vue'
 import reques from './request/Request.vue'
 import axios from 'axios'
+import carAnimation from './components/CarAnimation.vue'
+
 export default {
   name: 'app',
   data () {
@@ -58,6 +59,9 @@ export default {
       isTip:false,
       tip_msg:""
     }
+  },
+  components:{
+    carAnimation
   },
   props: {
 
