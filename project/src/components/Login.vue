@@ -1,12 +1,48 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <el-alert id='tip' :title="tip_msg" type="error" show-icon v-if="isTip" v-on:close="closeAlert"></el-alert>
+    <div class="login_logo">
+
+    </div>
+    <div class="login">
+        <div class="box1">
+        		<div class = "login-massage">
+        			乐活&nbsp;·&nbsp;乐智能&nbsp;·&nbsp;乐健康
+        		</div>
+    	    <div class="form_box">
+    	        <div class="login_form">
+    	        		<p > 欢迎登陆Santa Fe平台</p>
+    	        		<form autocomplete="off" >
+    	            <div class="input_fill user_input">
+    	                <!--<label>用户名</label><br />-->
+    	                <input type="text" placeholder="请输入用户名" name="text" autocomplete="off" v-on:focus="nameFoucs" v-on:blur="nameBlur" v-bind:class="{'active':namefoucs}" v-model="content_name">
+    	                <span class="user_icon" v-bind:class="{'active':namefoucs}"></span>
+    	            </div>
+    	            <div class="input_fill password_input">
+    	                <!--<label>密码</label><br />-->
+    	                <input type="password" placeholder="请输入密码" name="password" autocomplete="off"  v-on:focus="passwordFoucs" v-on:blur="passwordBlur" v-bind:class="{'active':passwordfoucs}" v-model="content_pwd"/>
+    	                <span class="password_icon" v-bind:class="{'active':passwordfoucs}"></span>
+    	            </div>
+    	            </form>
+    	            <div>
+    	                <input type="button" v-on:mousedown='loginBtnDidClicked' v-on:mouseup='loginBtnDidMouseup' v-on:mouseout='loginBtnDidMouseout' v-bind:class="{'selected' : didClicked}" value="登录" />
+    	            </div>
+    	        </div>
+    	        <div class="login_mask"></div>
+    	    </div>
+    	    <div class="QR_code">
+    	    		<img src="./../../static/img/QR_code.png"/>
+    	    		<p> 扫描添加</p>
+    	    		<p>意见反馈界面</p>
+    	    </div>
+        </div>
+    </div>
   </div>
 </template>
 
 <script>
-import App from './App.vue'
-import reques from './request/Request.vue'
+import App from './../App.vue'
+import reques from './../request/Request.vue'
 import axios from 'axios'
 
 export default {
@@ -30,6 +66,7 @@ export default {
     // 登录
     loginBtnDidClicked:function() {
       console.log('name:'+this.content_name+'\n'+'password:'+this.content_pwd);
+      this.$router.push({path:'/detail/'});
       this.didClicked = true;
       let data = {
                 user_id: this.content_name,
@@ -48,7 +85,9 @@ export default {
             this.$message({
               message:'登录成功',
               type:'success'
-          });
+            });
+            // 路由
+            this.$router.push({path:'/detail/'});
           }
         })
         .catch(error => {
@@ -147,10 +186,10 @@ a {
   text-align: center;
 }
 
-.user_icon {background:url(./../static/img/icon3.png) no-repeat;}
-.password_icon {background:url(./../static/img/icon.png) no-repeat;}
-.login .user_input .user_icon.active {background:url(./../static/img/icon4.png) no-repeat;}
-.login .password_input .password_icon.active {background:url(./../static/img/icon2.png) no-repeat;}
+.user_icon {background:url(./../../static/img/icon3.png) no-repeat;}
+.password_icon {background:url(./../../static/img/icon.png) no-repeat;}
+.login .user_input .user_icon.active {background:url(./../../static/img/icon4.png) no-repeat;}
+.login .password_input .password_icon.active {background:url(./../../static/img/icon2.png) no-repeat;}
 
 /*.login_logo{width:1200px;height:88px;margin:0 auto;background:#fff url(./../../static/img/indexlogo.png) 0 center no-repeat;}
 .login {width:100%;height:480px;margin:0px auto 0;background:url(./../static/img/loginimg.png) ;background-size:100% 100%;}*/

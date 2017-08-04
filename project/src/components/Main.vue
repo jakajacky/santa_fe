@@ -1,12 +1,16 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <el-alert id='tip' :title="tip_msg" type="error" show-icon v-if="isTip" v-on:close="closeAlert"></el-alert>
+    <div class="login_logo">
+
+    </div>
+    
   </div>
 </template>
 
 <script>
-import App from './App.vue'
-import reques from './request/Request.vue'
+import App from './../App.vue'
+import reques from './../request/Request.vue'
 import axios from 'axios'
 
 export default {
@@ -31,6 +35,7 @@ export default {
     loginBtnDidClicked:function() {
       console.log('name:'+this.content_name+'\n'+'password:'+this.content_pwd);
       this.didClicked = true;
+      this.$router.push({path:'/detail/'});
       let data = {
                 user_id: this.content_name,
                 fields: this.content_pwd
@@ -48,7 +53,9 @@ export default {
             this.$message({
               message:'登录成功',
               type:'success'
-          });
+            });
+            // 路由
+            this.$router.push({path:'/detail/'});
           }
         })
         .catch(error => {
@@ -147,10 +154,10 @@ a {
   text-align: center;
 }
 
-.user_icon {background:url(./../static/img/icon3.png) no-repeat;}
-.password_icon {background:url(./../static/img/icon.png) no-repeat;}
-.login .user_input .user_icon.active {background:url(./../static/img/icon4.png) no-repeat;}
-.login .password_input .password_icon.active {background:url(./../static/img/icon2.png) no-repeat;}
+.user_icon {background:url(./../../static/img/icon3.png) no-repeat;}
+.password_icon {background:url(./../../static/img/icon.png) no-repeat;}
+.login .user_input .user_icon.active {background:url(./../../static/img/icon4.png) no-repeat;}
+.login .password_input .password_icon.active {background:url(./../../static/img/icon2.png) no-repeat;}
 
 /*.login_logo{width:1200px;height:88px;margin:0 auto;background:#fff url(./../../static/img/indexlogo.png) 0 center no-repeat;}
 .login {width:100%;height:480px;margin:0px auto 0;background:url(./../static/img/loginimg.png) ;background-size:100% 100%;}*/
