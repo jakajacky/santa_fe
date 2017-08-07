@@ -2,17 +2,81 @@
   background: #fff;
 }
 
-
+.margin {
+  height: 20px;
+}
 
 .nav_bg {
   background:#fff;
   height:60px;
   width: 1200px;
-  margin-top: 20px;
   margin: 0 auto;
-  vertical-align: middle;
 }
 
 .main_btn {
   background: #fff;
+  color: #000;
+  width: 240px;
+  height: 60px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.main_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 240px;
+  height: 60px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.userManager_btn {
+  background: #fff;
+  color: #000;
+  width: 240px;
+  height: 60px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.userManager_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 240px;
+  height: 60px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.logout_btn {
+  background: #fff;
+  height: 60px;
+  margin-right: 50px;
+  float: right;
+}
+
+.el-dropdown-class {
+  float: right;
+  height: 60px;
+}
+
+.el-dropdown-link {
+  display: block;
+  height: 60px;
+  /*负责span中文字垂直居中*/
+  line-height: 60px;
+  margin-right: 50px;
+}
+
+.el-dropdown-menu-class {
+  text-align: center;
+}
+
+.el-dropdown-item-class {
+  color: #337ab7;
 }

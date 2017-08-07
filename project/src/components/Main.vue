@@ -5,11 +5,22 @@
       <div class="login_logo">
       </div>
     </div>
+    <div class="margin">
 
+    </div>
+    <div class="nav_bg">
+      <input class='main_btn' type="button" value="首页" v-on:click="main_btnDidClicked" v-bind:class="{'active':main_btn_active}"></input><input class='userManager_btn' type="button" value="用户管理" v-on:click="user_btnDidClicked" v-bind:class="{'active':user_btn_active}"></input>
+      <!-- <input class='logout_btn' type="button" value="悦享趋势 ▼" v-on:mouseover="logout_btnDidTouched" v-bind:class="{'active':logout_btn_active}"></input> -->
+      <el-dropdown class="el-dropdown-class" menu-align="start" @command="dropdown_handleCommand">
+        <span class="el-dropdown-link">
+          悦享趋势<i class="el-icon-caret-bottom el-icon--right"></i>
+        </span>
+        <el-dropdown-menu class="el-dropdown-menu-class" slot="dropdown">
+          <el-dropdown-item class="el-dropdown-item-class" command="退出登录">退出</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
 
-      <div class="nav_bg">
-        <input class='main_btn' type="button">首页</input>
-      </div>
+    </div>
 
   </div>
 </template>
@@ -30,14 +41,30 @@ export default {
       content_name:"",
       content_pwd:"",
       isTip:false,
-      tip_msg:""
+      tip_msg:"",
+      main_btn_active:true,
+      user_btn_active:false,
     }
   },
   props: {
 
   },
   methods: {
-
+    main_btnDidClicked:function() {
+      this.main_btn_active = true;
+      this.user_btn_active = false;
+    },
+    user_btnDidClicked:function() {
+      this.main_btn_active = false;
+      this.user_btn_active = true;
+    },
+    dropdown_handleCommand:function(command) {
+      this.$message({
+        message:command,
+        type:"warning",
+      });
+      this.$router.push({path:'/'});
+    }
   }
 }
 </script>
