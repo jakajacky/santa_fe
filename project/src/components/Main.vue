@@ -1,10 +1,16 @@
 <template>
   <div id="app">
     <el-alert id='tip' :title="tip_msg" type="error" show-icon v-if="isTip" v-on:close="closeAlert"></el-alert>
-    <div class="login_logo">
-
+    <div class="logo_bg">
+      <div class="login_logo">
+      </div>
     </div>
-    
+
+
+      <div class="nav_bg">
+        <input class='main_btn' type="button">首页</input>
+      </div>
+
   </div>
 </template>
 
@@ -31,102 +37,21 @@ export default {
 
   },
   methods: {
-    // 登录
-    loginBtnDidClicked:function() {
-      console.log('name:'+this.content_name+'\n'+'password:'+this.content_pwd);
-      this.didClicked = true;
-      this.$router.push({path:'/detail/'});
-      let data = {
-                user_id: this.content_name,
-                fields: this.content_pwd
-            }
-      reques.fetch('/energon-new/web/research/partnerlogin', data)
-        .then(res => {
-          console.log('success:'+res);
-          if (res.code != 10000) {
-            this.$message({
-              message:res.msg,
-              type:'warning'
-            });
-          }
-          else {
-            this.$message({
-              message:'登录成功',
-              type:'success'
-            });
-            // 路由
-            this.$router.push({path:'/detail/'});
-          }
-        })
-        .catch(error => {
-          console.log('fail:'+error);
-          this.$message({
-            message:error.message,
-            type:'error'
-          });
-        })
 
-    },
-    closeAlert:function() {
-      console.log('closeAlert');
-      this.isTip = false;
-    },
-    loginBtnDidMouseup:function() {
-      console.log('mouseup');
-      this.didClicked = false
-    },
-    loginBtnDidMouseout:function() {
-      console.log('mouseout');
-      this.didClicked = false;
-    },
-    //获得焦点
-    nameFoucs:function() {
-      console.log('foucs');
-      this.namefoucs = true;
-    },
-    //失去焦点
-    nameBlur:function() {
-      this.namefoucs = false;
-      if (!this.checkPhone(this.content_name)) {
-        this.isTip = true;
-        this.tip_msg = '手机号码有误，请重新填写';
-      }
-      else {
-        this.isTip = false;
-      }
-    },
-    // 密码框获得焦点
-    passwordFoucs:function() {
-      this.passwordfoucs = true;
-    },
-    // 密码框失去焦点
-    passwordBlur:function() {
-      this.passwordfoucs = false;
-    },
-    // 验证手机号
-    checkPhone:function(content){
-      // var phone = document.getElementById('phone').value;
-      if(!(/^1[34578]\d{9}$/.test(content))) {
-        return false;
-      }
-      else {
-        return true;
-      }
-}
   }
 }
 </script>
 
-<style>
+<style scoped src='./../../static/css/main.css'>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fff;
+  background: #eee;
   margin:0 auto;
-
-
+  text-align: center;
 }
+
 h1, h2 {
   font-weight: normal;
 }

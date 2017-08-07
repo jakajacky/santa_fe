@@ -1,8 +1,9 @@
 <template>
   <div id="app">
     <el-alert id='tip' :title="tip_msg" type="error" show-icon v-if="isTip" v-on:close="closeAlert"></el-alert>
-    <div class="login_logo">
-
+    <div class="logo_bg">
+      <div class="login_logo">
+      </div>
     </div>
     <div class="login">
         <div class="box1">
@@ -154,11 +155,14 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #fff;
+  background: #eee;
   margin:0 auto;
-
-
 }
+
+.logo_bg {
+  background: #fff;
+}
+
 h1, h2 {
   font-weight: normal;
 }
