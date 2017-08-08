@@ -67,6 +67,9 @@ export default {
     // 登录
     loginBtnDidClicked:function() {
       console.log('name:'+this.content_name+'\n'+'password:'+this.content_pwd);
+      // 方便登录
+      // this.content_name = '18600036466';
+      // this.content_pwd = '123456';
       this.$router.push({path:'/detail/'});
       this.didClicked = true;
       let data = {

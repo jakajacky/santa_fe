@@ -43,6 +43,60 @@
         </ul>
       </div>
 
+      <!-- <div class="margin-3">  </div> -->
+      <!-- 数据列表 -->
+      <div class="statistic_list">
+        <div class="device_nav">
+
+        </div>
+        <div class="margin-4">  </div>
+        <div class="data_type_nav">
+
+        </div>
+        <el-table :data="tableData" stripe style="width: 100%">
+          <el-table-column
+            prop="user_id"
+            label="用户ID"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="date"
+            label="时间"
+            width="180">
+          </el-table-column>
+          <el-table-column
+            prop="shousuo"
+            label="收缩压">
+          </el-table-column>
+          <el-table-column
+            prop="shuzhang"
+            label="舒张压">
+          </el-table-column>
+          <el-table-column
+            prop="detail"
+            label="">
+            <template scope="scope">
+              <el-button
+                size="small"
+                type="text"
+                @click="handleDetail(scope.$index, scope.row)">详细参数</el-button>
+            </template>
+          </el-table-column>
+          <el-table-column
+            prop="wave"
+            label="">
+            <template scope="scope">
+              <el-button
+                size="small"
+                type="text"
+                @click="handleWave(scope.$index, scope.row)">波形</el-button>
+            </template>
+
+          </el-table-column>
+
+        </el-table>
+      </div>
+
       <div class="margin-2">  </div>
       <!-- 用户年龄及性别组成 -->
       <div class="age_gender_statistic">
@@ -52,6 +106,8 @@
 
         </div>
       </div>
+
+
 
     </div>
 
@@ -144,6 +200,47 @@ export default {
       tip_msg:"",
       main_btn_active:true,
       user_btn_active:false,
+      tableData: [{
+        user_id:'18515982821',
+        date: '2016-05-02 22:55:30',
+        shousuo: '160',
+        shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }, {
+         user_id:'18515982821',
+         date: '2016-05-02 22:55:30',
+         shousuo: '160',
+         shuzhang: '90',
+       }]
     }
   },
   props: {
@@ -164,6 +261,12 @@ export default {
         type:"warning",
       });
       this.$router.push({path:'/'});
+    },
+    handleDetail:function() {
+      console.log('详细参数');
+    },
+    handleWave:function() {
+      console.log('波形');
     }
   },
   mounted() {

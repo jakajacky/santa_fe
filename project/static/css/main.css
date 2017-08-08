@@ -81,7 +81,7 @@
 .el-dropdown-item-class {
   color: #337ab7;
 }
-
+/**/
 .margin-1 {
   height: 10px;
 }
@@ -93,11 +93,12 @@
   margin: 0 auto;
   padding-top: 20px;
 }
-
+/**/
 .total_statistic {
   background: #fff;
   height: 300px;
   width: 330px;
+  float: left;
   margin-left: 20px;
   border-color: lightgray;
   border-width: 0.5px;
@@ -137,15 +138,18 @@
   float: right;
   font-size: 30px;
 }
-
+/**/
 .margin-2 {
   height: 40px;
+  width: 330px;
+  float: left;
 }
 
 .age_gender_statistic {
   background: #fff;
   height: 300px;
   width: 330px;
+  float: left;
   margin-left: 20px;
   border-color: lightgray;
   border-width: 0.5px;
@@ -166,4 +170,35 @@
   height: 250px;
   width: 330px;
   background: #333;
+}
+
+.margin-3 {
+
+}
+
+/**/
+.statistic_list {
+  height: 642px;
+  width: 780px;
+  float: right;
+  background: #fff;
+  margin-right: 20px;
+  border: 1px solid #ddd;
+}
+
+.device_nav {
+  height: 50px;
+  background: #f3f5fa;
+  border-bottom: 1px solid #ddd;
+}
+
+.margin-4 {
+  height: 10px;
+}
+
+.data_type_nav {
+  height: 50px;
+  background: #f3f5fa;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
 }
