@@ -20,9 +20,36 @@
     <div class="margin-1"> </div>
 
     <div class="content_bg">
+      <!-- 总数统计 -->
       <div class="total_statistic">
+        <span class="total_statistic_title">总数统计</span>
+        <ul class="total_statistic_list">
+          <li>
+            <span>用户数量</span>
+            <span id="num" class="user_num">4626</span>
+          </li>
+          <li>
+            <span>测量数量</span>
+            <span id="num" class="test_num">43012</span>
+          </li>
+          <li>
+            <span>本周新增用户</span>
+            <span id="num" class="new_user_num">1</span>
+          </li>
+          <li>
+            <span>本周新增数据</span>
+            <span id="num" class="new_data_num">12</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="margin-2">  </div>
+      <!-- 用户年龄及性别组成 -->
+      <div class="age_gender_statistic">
+        <span class="age_gender_statistic_title">用户年龄及性别组成</span>
 
       </div>
+
     </div>
 
   </div>

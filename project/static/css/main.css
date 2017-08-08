@@ -88,17 +88,76 @@
 
 .content_bg {
   background: #fff;
-  height: 500px;
+  height: 700px;
   width: 1200px;
   margin: 0 auto;
   padding-top: 20px;
 }
 
 .total_statistic {
-  background: #32d500;
-  height: 50px;
+  background: #fff;
+  height: 300px;
+  width: 330px;
   margin-left: 20px;
   border-color: lightgray;
   border-width: 0.5px;
   border-style: solid;
+}
+
+.total_statistic .total_statistic_title {
+  display: block;
+  background: #f3f5fa;
+  height: 50px;
+  /*负责span中文字垂直居中*/
+  line-height: 50px;
+  padding-left: 30px;
+  border-bottom: 1px solid #ddd;
+}
+
+.total_statistic .total_statistic_list {
+  padding: 0 20px;
+  color: #666;
+}
+
+.total_statistic .total_statistic_list li {
+  position: relative;
+  height: 30px;
+  padding-top: 25px;
+  border-bottom: 1px solid #ddd;
+  display: block;
+}
+
+.total_statistic .total_statistic_list li span {
+  vertical-align: bottom;
+  height: 30px;
+  line-height: 30px;
+}
+
+.total_statistic .total_statistic_list li #num {
+  float: right;
+  font-size: 30px;
+}
+
+.margin-2 {
+  height: 40px;
+}
+
+.age_gender_statistic {
+  background: #fff;
+  height: 300px;
+  width: 330px;
+  margin-left: 20px;
+  border-color: lightgray;
+  border-width: 0.5px;
+  border-style: solid;
+}
+
+.age_gender_statistic .age_gender_statistic_title {
+  display: block;
+  background: #f3f5fa;
+  height: 50px;
+  /*负责span中文字垂直居中*/
+  line-height: 50px;
+  padding-left: 30px;
+  border-bottom: 1px solid #ddd;
 }
