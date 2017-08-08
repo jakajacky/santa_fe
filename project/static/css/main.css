@@ -161,3 +161,9 @@
   padding-left: 30px;
   border-bottom: 1px solid #ddd;
 }
+
+.age_gender_statistic .age_gender_charts {
+  height: 250px;
+  width: 330px;
+  background: #333;
+}

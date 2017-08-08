@@ -47,7 +47,10 @@
       <!-- 用户年龄及性别组成 -->
       <div class="age_gender_statistic">
         <span class="age_gender_statistic_title">用户年龄及性别组成</span>
+        <!-- 图表 -->
+        <div id="age_gender_charts_id" class="age_gender_charts">
 
+        </div>
       </div>
 
     </div>
@@ -58,7 +61,74 @@
 <script>
 import App from './../App.vue'
 import reques from './../request/Request.vue'
+import echarts from 'echarts'
 import axios from 'axios'
+
+// echart 配置
+// 指定图表的配置项和数据
+var option = {
+    // tooltip: {},
+    title: [{
+                text: '',
+                left: '33%',
+                top: '48%',
+                textAlign: 'center',
+                textBaseline: 'middle',
+                textStyle: {
+                    color: '#666',
+                    fontWeight: 'normal',
+                    fontSize: 14
+                }
+            }],
+    color:['#72dc95', '#f9cd83', '#ec7c7b', '#d294e4', '#7abcdf'],
+    legend: {
+        orient:'vertical',
+        x:'right',
+        y: 30,
+        itemWidth: 14,
+        data:[
+          {name:'小于20岁'},
+          {name:'20-40岁'},
+          {name:'40-60岁'},
+          {name:'60-80岁'},
+          {name:'大于80岁'}]
+    },
+    series: [{
+        name: '占比',
+        type: 'pie',
+        center: ['125', '90'],
+        radius: ['25%', '40%'],
+        // avoidLabelOverlap: false,
+        label: {
+            normal: {
+                textStyle: {
+                    fontSize: 12
+                }
+            },
+            emphasis: {
+                show: true,
+                textStyle: {
+                    fontSize: '12',
+                    fontWeight: 'bold'
+                }
+            }
+        },
+        itemStyle: {
+            normal: {
+                label: {
+                    show: true,
+                    formatter: '{d}%'
+                }
+            }
+        },
+        data: [
+          {value:302,name:'小于20岁'},
+          {value:1376,name:'20-40岁'},
+          {value:932,name:'40-60岁'},
+          {value:387,name:'60-80岁'},
+          {value:472,name:'大于80岁'}]
+    }]
+};
 
 export default {
   name: 'app',
@@ -95,6 +165,12 @@ export default {
       });
       this.$router.push({path:'/'});
     }
+  },
+  mounted() {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('age_gender_charts_id'));
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
   }
 }
 </script>
