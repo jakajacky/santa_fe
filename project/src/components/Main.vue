@@ -5,12 +5,9 @@
       <div class="login_logo">
       </div>
     </div>
-    <div class="margin">
-
-    </div>
+    <div class="margin"></div>
     <div class="nav_bg">
       <input class='main_btn' type="button" value="首页" v-on:click="main_btnDidClicked" v-bind:class="{'active':main_btn_active}"></input><input class='userManager_btn' type="button" value="用户管理" v-on:click="user_btnDidClicked" v-bind:class="{'active':user_btn_active}"></input>
-      <!-- <input class='logout_btn' type="button" value="悦享趋势 ▼" v-on:mouseover="logout_btnDidTouched" v-bind:class="{'active':logout_btn_active}"></input> -->
       <el-dropdown class="el-dropdown-class" menu-align="start" @command="dropdown_handleCommand">
         <span class="el-dropdown-link">
           悦享趋势<i class="el-icon-caret-bottom el-icon--right"></i>
@@ -19,7 +16,13 @@
           <el-dropdown-item class="el-dropdown-item-class" command="退出登录">退出</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
+    </div>
+    <div class="margin-1"> </div>
 
+    <div class="content_bg">
+      <div class="total_statistic">
+
+      </div>
     </div>
 
   </div>

@@ -81,3 +81,24 @@
 .el-dropdown-item-class {
   color: #337ab7;
 }
+
+.margin-1 {
+  height: 10px;
+}
+
+.content_bg {
+  background: #fff;
+  height: 500px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
+.total_statistic {
+  background: #32d500;
+  height: 50px;
+  margin-left: 20px;
+  border-color: lightgray;
+  border-width: 0.5px;
+  border-style: solid;
+}
