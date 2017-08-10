@@ -47,11 +47,14 @@
       <!-- 数据列表 -->
       <div class="statistic_list">
         <div class="device_nav">
-
+          <input class="watch_btn" type="button" v-on:click="watch_btnDidClicked" v-bind:class="{'active':watch_btn_active}" value="脉搏波智能手表"></input><input class="linto_btn" type="button" v-on:click="linto_btnDidClicked" v-bind:class="{'active':linto_btn_active}" value="多合一参数设备"></input>
         </div>
         <div class="margin-4">  </div>
-        <div class="data_type_nav">
-
+        <div class="data_type_nav" v-if="watch_btn_active">
+          <input class="watch_bloodp_btn" type="button" v-on:click="watch_bloodp_btnDidClicked" v-bind:class="{'active':watch_bloodp_btn_active}" value="血压异常数据"></input><input class="watch_heartshake_btn" type="button" v-on:click="watch_heartshake_btnDidClicked" v-bind:class="{'active':watch_heartshake_btn_active}" value="房颤风险"></input><input class="watch_pwv_btn" type="button" v-on:click="watch_pwv_btnDidClicked" v-bind:class="{'active':watch_pwv_btn_active}" value="PWV异常数据"></input><input class="watch_heartrate_btn" type="button" v-on:click="watch_heartrate_btnDidClicked" v-bind:class="{'active':watch_heartrate_btn_active}" value="心率异常数据"></input>
+        </div>
+        <div class="data_type_nav" v-if="linto_btn_active">
+          <input class="linto_bloodp_btn" type="button" v-on:click="linto_bloodp_btnDidClicked" v-bind:class="{'active':linto_bloodp_btn_active}" value="血压异常数据"></input><input class="linto_bloodo_btn" type="button" v-on:click="linto_bloodo_btnDidClicked" v-bind:class="{'active':linto_bloodo_btn_active}" value="血氧异常数据"><input class="linto_heartshake_btn" type="button" v-on:click="linto_heartshake_btnDidClicked" v-bind:class="{'active':linto_heartshake_btn_active}" value="房颤异常数据"></input><input class="linto_heartrate_btn" type="button" v-on:click="linto_heartrate_btnDidClicked" v-bind:class="{'active':linto_heartrate_btn_active}" value="心率异常数据"></input><input class="linto_temp_btn" type="button" v-on:click="linto_temp_btnDidClicked" v-bind:class="{'active':linto_temp_btn_active}" value="体温异常数据"></input>
         </div>
         <el-table :data="tableData" stripe style="width: 100%">
           <el-table-column
@@ -95,6 +98,15 @@
           </el-table-column>
 
         </el-table>
+        <div class="margin-5">  </div>
+        <el-pagination style="float:right;"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage1"
+          :page-size="100"
+          layout="total, prev, pager, next"
+          :total="1000">
+        </el-pagination>
       </div>
 
       <div class="margin-2">  </div>
@@ -200,6 +212,17 @@ export default {
       tip_msg:"",
       main_btn_active:true,
       user_btn_active:false,
+      watch_btn_active:true,
+      linto_btn_active:false,
+      watch_bloodp_btn_active:true,
+      watch_heartshake_btn_active:false,
+      watch_pwv_btn_active:false,
+      watch_heartrate_btn_active:false,
+      linto_bloodp_btn_active:true,
+      linto_bloodo_btn_active:false,
+      linto_heartshake_btn_active:false,
+      linto_heartrate_btn_active:false,
+      linto_temp_btn_active:false,
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -267,6 +290,74 @@ export default {
     },
     handleWave:function() {
       console.log('波形');
+    },
+    linto_btnDidClicked:function() {
+      this.watch_btn_active = false;
+      this.linto_btn_active = true;
+    },
+    watch_btnDidClicked:function() {
+      this.watch_btn_active = true;
+      this.linto_btn_active = false;
+    },
+
+    watch_bloodp_btnDidClicked:function() {
+      this.watch_bloodp_btn_active =true;
+      this.watch_heartshake_btn_active =false;
+      this.watch_pwv_btn_active = false;
+      this.watch_heartrate_btn_active = false;
+    },
+    watch_heartshake_btnDidClicked:function() {
+      this.watch_bloodp_btn_active =false;
+      this.watch_heartshake_btn_active =true;
+      this.watch_pwv_btn_active = false;
+      this.watch_heartrate_btn_active = false;
+    },
+    watch_pwv_btnDidClicked:function() {
+      this.watch_bloodp_btn_active =false;
+      this.watch_heartshake_btn_active =false;
+      this.watch_pwv_btn_active = true;
+      this.watch_heartrate_btn_active = false;
+    },
+    watch_heartrate_btnDidClicked:function() {
+      this.watch_bloodp_btn_active =false;
+      this.watch_heartshake_btn_active =false;
+      this.watch_pwv_btn_active = false;
+      this.watch_heartrate_btn_active = true;
+    },
+    linto_bloodp_btnDidClicked:function() {
+      this.linto_bloodp_btn_active=true;
+      this.linto_bloodo_btn_active=false;
+      this.linto_heartshake_btn_active=false;
+      this.linto_heartrate_btn_active=false;
+      this.linto_temp_btn_active=false;
+    },
+    linto_bloodo_btnDidClicked:function() {
+      this.linto_bloodp_btn_active=false;
+      this.linto_bloodo_btn_active=true;
+      this.linto_heartshake_btn_active=false;
+      this.linto_heartrate_btn_active=false;
+      this.linto_temp_btn_active=false;
+    },
+    linto_heartshake_btnDidClicked:function() {
+      this.linto_bloodp_btn_active=false;
+      this.linto_bloodo_btn_active=false;
+      this.linto_heartshake_btn_active=true;
+      this.linto_heartrate_btn_active=false;
+      this.linto_temp_btn_active=false;
+    },
+    linto_heartrate_btnDidClicked:function() {
+      this.linto_bloodp_btn_active=false;
+      this.linto_bloodo_btn_active=false;
+      this.linto_heartshake_btn_active=false;
+      this.linto_heartrate_btn_active=true;
+      this.linto_temp_btn_active=false;
+    },
+    linto_temp_btnDidClicked:function() {
+      this.linto_bloodp_btn_active=false;
+      this.linto_bloodo_btn_active=false;
+      this.linto_heartshake_btn_active=false;
+      this.linto_heartrate_btn_active=false;
+      this.linto_temp_btn_active=true;
     }
   },
   mounted() {

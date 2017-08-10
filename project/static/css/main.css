@@ -176,9 +176,9 @@
 
 }
 
-/**/
+/*642*/
 .statistic_list {
-  height: 642px;
+  height: 530px;
   width: 780px;
   float: right;
   background: #fff;
@@ -192,6 +192,47 @@
   border-bottom: 1px solid #ddd;
 }
 
+.watch_btn {
+  background: #fff;
+  color: #000;
+  width: 240px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 240px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.linto_btn {
+  background: #fff;
+  color: #000;
+  width: 240px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.linto_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 240px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+
 .margin-4 {
   height: 10px;
 }
@@ -201,4 +242,182 @@
   background: #f3f5fa;
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
+}
+/*this.watch_bloodp_btn_active =false;
+this.watch_heartshake_btn_active =false;
+this.watch_pwv_btn_active = true;
+this.watch_heartrate_btn_active*/
+.watch_bloodp_btn {
+  background: #fff;
+  color: #000;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_bloodp_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_heartshake_btn {
+  background: #fff;
+  color: #000;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_heartshake_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_pwv_btn {
+  background: #fff;
+  color: #000;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_pwv_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_heartrate_btn {
+  background: #fff;
+  color: #000;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.watch_heartrate_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 195px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.linto_bloodp_btn {
+  background: #fff;
+  color: #000;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_bloodp_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_bloodo_btn {
+  background: #fff;
+  color: #000;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_bloodo_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_heartshake_btn {
+  background: #fff;
+  color: #000;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_heartshake_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_heartrate_btn {
+  background: #fff;
+  color: #000;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_heartrate_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_temp_btn {
+  background: #fff;
+  color: #000;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+.linto_temp_btn.active {
+  background: #42a2d8;
+  color: #fff;
+  width: 156px;
+  height: 50px;
+  border-right-style: solid;
+  border-right-color: lightgray;
+  border-right-width: 1px;
+}
+
+.margin-5 {
+  height: 10px;
 }
