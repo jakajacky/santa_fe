@@ -99,13 +99,12 @@
 
         </el-table>
         <div class="margin-5">  </div>
-        <el-pagination style="float:right;"
-          @size-change="handleSizeChange"
-          @current-change="handleCurrentChange"
+        <el-pagination style="float:right;padding-right:20px;"
+          @current-change="handleCurrentPageChange"
           :current-page.sync="currentPage1"
-          :page-size="100"
+          :page-size="8"
           layout="total, prev, pager, next"
-          :total="1000">
+          :total="25">
         </el-pagination>
       </div>
 
@@ -223,6 +222,7 @@ export default {
       linto_heartshake_btn_active:false,
       linto_heartrate_btn_active:false,
       linto_temp_btn_active:false,
+      currentPage1:1,
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -358,6 +358,9 @@ export default {
       this.linto_heartshake_btn_active=false;
       this.linto_heartrate_btn_active=false;
       this.linto_temp_btn_active=true;
+    },
+    handleCurrentPageChange:function(currentPage) {
+      console.log(currentPage);
     }
   },
   mounted() {
