@@ -118,6 +118,23 @@
         <div id="age_gender_charts_id" class="age_gender_charts">
 
         </div>
+        <!-- 进度 -->
+        <span class="male_title" style="margin-left:30px;color:#13ce66">男性人数：1950</span>
+        <el-progress class="progresss"
+          :show-text="false"
+          :text-inside="true"
+          :stroke-width="16"
+          :percentage="100"
+          status="success">
+        </el-progress>
+        <div class="margin-7">  </div>
+        <span class="female_title" style="margin-left:30px;color:#20a0ff">女性人数：1457</span>
+        <el-progress class="progresss"
+          :show-text="false"
+          :text-inside="true"
+          :stroke-width="16"
+          :percentage="100">
+        </el-progress>
       </div>
 
       <div class="margin-6">  </div>
@@ -174,7 +191,7 @@ var option = {
     title: [{
         text: '3470',
         left: '36.5%',
-        top: '34.5%',
+        top: '42.5%',
         textAlign: 'center',
         textBaseline: 'middle',
         textStyle: {
@@ -200,7 +217,7 @@ var option = {
         name: '占比',
         type: 'pie',
         center: ['125', '90'],
-        radius: ['25%', '40%'],
+        radius: ['30%', '45%'],
         // avoidLabelOverlap: false,
         label: {
             normal: {
