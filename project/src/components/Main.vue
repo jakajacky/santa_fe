@@ -80,6 +80,7 @@
             label="">
             <template scope="scope">
               <el-button
+                class="elbutton"
                 size="small"
                 type="text"
                 @click="handleDetail(scope.$index, scope.row)">详细参数</el-button>
@@ -90,6 +91,7 @@
             label="">
             <template scope="scope">
               <el-button
+                class="elbutton"
                 size="small"
                 type="text"
                 @click="handleWave(scope.$index, scope.row)">波形</el-button>
@@ -118,7 +120,41 @@
         </div>
       </div>
 
+      <div class="margin-6">  </div>
+      <!-- 异常数据统计 -->
+      <div class="exception_total">
+        <div class="exception_total_nav">
+          <span class="title">异常数据统计</span>
+        </div>
+        <ul class="danger">
+          <li>
+            <p >房颤人数</p>
+            <div class="num_div">
+              <span class="num">0</span><span> 人</span>
+            </div>
 
+          </li>
+          <li>
+            <p >血氧异常人数</p>
+            <div class="num_div">
+              <span class="num">3</span><span> 人</span>
+            </div>
+          </li>
+          <li>
+            <p >血压异常人数</p>
+            <div class="num_div">
+              <span class="num">1</span><span> 人</span>
+            </div>
+          </li>
+          <li>
+            <p>体温异常人数</p>
+            <div class="num_div">
+              <span class="num">2</span><span> 人</span>
+            </div>
+          </li>
+        </ul>
+
+      </div>
 
     </div>
 
@@ -136,17 +172,17 @@ import axios from 'axios'
 var option = {
     // tooltip: {},
     title: [{
-                text: '',
-                left: '33%',
-                top: '48%',
-                textAlign: 'center',
-                textBaseline: 'middle',
-                textStyle: {
-                    color: '#666',
-                    fontWeight: 'normal',
-                    fontSize: 14
-                }
-            }],
+        text: '3470',
+        left: '36.5%',
+        top: '34.5%',
+        textAlign: 'center',
+        textBaseline: 'middle',
+        textStyle: {
+            color: '#666',
+            fontWeight: 'normal',
+            fontSize: 14
+        }
+    }],
     color:['#72dc95', '#f9cd83', '#ec7c7b', '#d294e4', '#7abcdf'],
     legend: {
         orient:'vertical',
