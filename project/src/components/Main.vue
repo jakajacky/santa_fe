@@ -26,19 +26,19 @@
         <ul class="total_statistic_list">
           <li>
             <span>用户数量</span>
-            <span id="num" class="user_num">{{this.leftData.alluser}}</span>
+            <span id="num" class="user_num">{{this.alluser}}</span>
           </li>
           <li>
             <span>测量数量</span>
-            <span id="num" class="test_num">{{this.leftData.alldata}}</span>
+            <span id="num" class="test_num">{{this.alldata}}</span>
           </li>
           <li>
             <span>本周新增用户</span>
-            <span id="num" class="new_user_num">{{this.leftData.weekadduser}}</span>
+            <span id="num" class="new_user_num">{{this.weekadduser}}</span>
           </li>
           <li>
             <span>本周新增数据</span>
-            <span id="num" class="new_data_num">{{this.leftData.weekadddata}}</span>
+            <span id="num" class="new_data_num">{{this.weekadddata}}</span>
           </li>
         </ul>
       </div>
@@ -250,6 +250,30 @@ var option = {
     }]
 };
 
+//按照西方国家的方法显示数字
+var cutStr=function(str){
+    var newStr=new Array(str.length+parseInt(str.length/3));
+    var strArray=str.split("");
+    newStr[newStr.length-1]=strArray[strArray.length-1];
+    var currentIndex=strArray.length-1;
+    for (var index = newStr.length - 1; index >= 0; index--) {
+      if ((newStr.length - index) % 4 == 0) {
+        newStr[index] = ",";
+      }
+      else{
+        newStr[index] = strArray[currentIndex--];
+      }
+    }
+    var reg = /^\,/;
+    if(reg.test(newStr)){
+        newStr.shift();
+        return newStr.join("");
+          }else{
+              return newStr.join("");
+          }
+
+};
+
 export default {
   name: 'app',
   data () {
@@ -276,6 +300,10 @@ export default {
       linto_heartrate_btn_active:false,
       linto_temp_btn_active:false,
       currentPage1:1,
+      alluser:'',
+      alldata:'',
+      weekadduser:'',
+      weekadddata:'',
       age_total_num:0,
       male_num:0,
       female_num:0,
@@ -418,7 +446,7 @@ export default {
     },
     handleCurrentPageChange:function(currentPage) {
       console.log(currentPage);
-    }
+    },
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
@@ -446,6 +474,12 @@ export default {
           //
           console.log(res.data);
           this.leftData = res.data;
+          // 总数
+          this.alluser = cutStr(this.leftData.alluser+'');
+          this.alldata = cutStr(this.leftData.alldata+'');
+          this.weekadduser = cutStr(this.leftData.weekadduser+'');
+          this.weekadddata = cutStr(this.leftData.weekadddata+'');
+          // 饼图
           var total_num = 0;
           for (var i = 0; i < this.leftData.agelist.length; i++) {
             option.series[0].data[i].value = this.leftData.agelist[i].count;
@@ -454,7 +488,7 @@ export default {
           this.age_total_num = total_num;
           option.title[0].text = ''+this.age_total_num;
           myChart.setOption(option);
-
+          // 男女比例
           this.male_num = this.leftData.genderlist[1].count;
           this.female_num = this.leftData.genderlist[0].count;
         }
