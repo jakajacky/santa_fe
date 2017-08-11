@@ -417,6 +417,34 @@ export default {
     }
   },
   mounted() {
+    let data = {
+              reg_id: 1,
+          }
+    reques.fetch('/energon-new/web/research/userlistdetails', data)
+      .then(res => {
+        console.log('success:'+res);
+        if (res.code != 10000) {
+          this.$message({
+            message:res.msg,
+            type:'warning'
+          });
+        }
+        else {
+          this.$message({
+            message:'登录成功',
+            type:'success'
+          });
+          // 路由
+          this.$router.push({path:'/detail/'});
+        }
+      })
+      .catch(error => {
+        console.log('fail:'+error);
+        this.$message({
+          message:error.message,
+          type:'error'
+        });
+      })
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('age_gender_charts_id'));
     // 使用刚指定的配置项和数据显示图表。
