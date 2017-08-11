@@ -147,26 +147,26 @@
           <li>
             <p >房颤人数</p>
             <div class="num_div">
-              <span class="num">0</span><span> 人</span>
+              <span class="num">{{this.afib_num}}</span><span> 人</span>
             </div>
 
           </li>
           <li>
             <p >血氧异常人数</p>
             <div class="num_div">
-              <span class="num">3</span><span> 人</span>
+              <span class="num">{{this.spo2h_num}}</span><span> 人</span>
             </div>
           </li>
           <li>
             <p >血压异常人数</p>
             <div class="num_div">
-              <span class="num">1</span><span> 人</span>
+              <span class="num">{{this.sbp_num}}</span><span> 人</span>
             </div>
           </li>
           <li>
             <p>体温异常人数</p>
             <div class="num_div">
-              <span class="num">2</span><span> 人</span>
+              <span class="num">{{this.temp_num}}</span><span> 人</span>
             </div>
           </li>
         </ul>
@@ -308,6 +308,10 @@ export default {
       male_num:0,
       female_num:0,
       leftData:{},
+      afib_num:0,
+      spo2h_num:0,
+      sbp_num:0,
+      temp_num:0,
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -453,7 +457,7 @@ export default {
     var myChart = echarts.init(document.getElementById('age_gender_charts_id'));
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
-
+    // 网络请求一
     let data = {
               reg_id: 1,
           }
@@ -468,7 +472,7 @@ export default {
         }
         else {
           this.$message({
-            message:'登录成功',
+            message:'加载成功',
             type:'success'
           });
           //
@@ -491,6 +495,37 @@ export default {
           // 男女比例
           this.male_num = this.leftData.genderlist[1].count;
           this.female_num = this.leftData.genderlist[0].count;
+        }
+      })
+      .catch(error => {
+        console.log('fail:'+error);
+        this.$message({
+          message:error.message,
+          type:'error'
+        });
+      })
+
+    // 网络请求二
+    reques.receive('/energon-new/web/linktop/counts')
+      .then(res => {
+        console.log('success:'+res);
+        if (res.code != 10000) {
+          this.$message({
+            message:res.msg,
+            type:'warning'
+          });
+        }
+        else {
+          this.$message({
+            message:'加载成功',
+            type:'success'
+          });
+          //
+          console.log(res.data);
+          this.afib_num = res.data.afib;
+          this.spo2h_num = res.data.spo2h;
+          this.sbp_num = res.data.sbp;
+          this.temp_num = res.data.temp;
         }
       })
       .catch(error => {

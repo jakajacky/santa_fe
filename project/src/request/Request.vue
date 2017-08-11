@@ -55,6 +55,19 @@ export default {
           reject(error);
         })
     })
-  }
+  },
+	receive:function(url) {
+		return new Promise((resolve,reject) => {
+			axios.get(url)
+				.then(response => {
+					console.log(response.data);
+					resolve(response.data);
+				})
+				.catch(error => {
+					console.log(error);
+					reject(error);
+				})
+		})
+	}
 }
 </script>
