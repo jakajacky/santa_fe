@@ -26,19 +26,19 @@
         <ul class="total_statistic_list">
           <li>
             <span>用户数量</span>
-            <span id="num" class="user_num">4626</span>
+            <span id="num" class="user_num">{{this.leftData.alluser}}</span>
           </li>
           <li>
             <span>测量数量</span>
-            <span id="num" class="test_num">43012</span>
+            <span id="num" class="test_num">{{this.leftData.alldata}}</span>
           </li>
           <li>
             <span>本周新增用户</span>
-            <span id="num" class="new_user_num">1</span>
+            <span id="num" class="new_user_num">{{this.leftData.weekadduser}}</span>
           </li>
           <li>
             <span>本周新增数据</span>
-            <span id="num" class="new_data_num">12</span>
+            <span id="num" class="new_data_num">{{this.leftData.weekadddata}}</span>
           </li>
         </ul>
       </div>
@@ -119,7 +119,7 @@
 
         </div>
         <!-- 进度 -->
-        <span class="male_title" style="margin-left:30px;color:#13ce66">男性人数：1950</span>
+        <span class="male_title" style="margin-left:30px;color:#13ce66">男性人数：{{this.male_num}}</span>
         <el-progress class="progresss"
           :show-text="false"
           :text-inside="true"
@@ -128,7 +128,7 @@
           status="success">
         </el-progress>
         <div class="margin-7">  </div>
-        <span class="female_title" style="margin-left:30px;color:#20a0ff">女性人数：1457</span>
+        <span class="female_title" style="margin-left:30px;color:#20a0ff">女性人数：{{this.female_num}}</span>
         <el-progress class="progresss"
           :show-text="false"
           :text-inside="true"
@@ -189,7 +189,7 @@ import axios from 'axios'
 var option = {
     // tooltip: {},
     title: [{
-        text: '3470',
+        text: '',
         left: '36.5%',
         top: '42.5%',
         textAlign: 'center',
@@ -242,11 +242,11 @@ var option = {
             }
         },
         data: [
-          {value:302,name:'小于20岁'},
-          {value:1376,name:'20-40岁'},
-          {value:932,name:'40-60岁'},
-          {value:387,name:'60-80岁'},
-          {value:472,name:'大于80岁'}]
+          {value:0,name:'小于20岁'},
+          {value:0,name:'20-40岁'},
+          {value:0,name:'40-60岁'},
+          {value:0,name:'60-80岁'},
+          {value:0,name:'大于80岁'}]
     }]
 };
 
@@ -276,6 +276,10 @@ export default {
       linto_heartrate_btn_active:false,
       linto_temp_btn_active:false,
       currentPage1:1,
+      age_total_num:0,
+      male_num:0,
+      female_num:0,
+      leftData:{},
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -417,6 +421,11 @@ export default {
     }
   },
   mounted() {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('age_gender_charts_id'));
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+
     let data = {
               reg_id: 1,
           }
@@ -434,8 +443,20 @@ export default {
             message:'登录成功',
             type:'success'
           });
-          // 路由
-          this.$router.push({path:'/detail/'});
+          //
+          console.log(res.data);
+          this.leftData = res.data;
+          var total_num = 0;
+          for (var i = 0; i < this.leftData.agelist.length; i++) {
+            option.series[0].data[i].value = this.leftData.agelist[i].count;
+            total_num += this.leftData.agelist[i].count;
+          }
+          this.age_total_num = total_num;
+          option.title[0].text = ''+this.age_total_num;
+          myChart.setOption(option);
+
+          this.male_num = this.leftData.genderlist[1].count;
+          this.female_num = this.leftData.genderlist[0].count;
         }
       })
       .catch(error => {
@@ -445,10 +466,7 @@ export default {
           type:'error'
         });
       })
-    // 基于准备好的dom，初始化echarts实例
-    var myChart = echarts.init(document.getElementById('age_gender_charts_id'));
-    // 使用刚指定的配置项和数据显示图表。
-    myChart.setOption(option);
+
   }
 }
 </script>
