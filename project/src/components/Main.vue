@@ -170,6 +170,14 @@
             </div>
           </li>
         </ul>
+      </div>
+
+      <!-- 用户血压趋势分布 -->
+      <div class="margin-8">    </div>
+      <div class="user_bloodPresure_trend">
+        <div class="user_bloodPresure_trend_nav">
+          <span>用户血压趋势分布</span>
+        </div>
 
       </div>
 
