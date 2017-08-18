@@ -176,8 +176,14 @@
       <div class="margin-8">    </div>
       <div class="user_bloodPresure_trend">
         <div class="user_bloodPresure_trend_nav">
-          <span>用户血压趋势分布</span>
+          <span class="title">用户血压趋势分布</span>
+          <span class="tipbtn" v-on:mouseover="tipbtnMousemove">
+            <div class="tooltip">
+
+            </div>
+          </span>
         </div>
+        <div class="margin-9">  </div>
 
       </div>
 
@@ -459,6 +465,9 @@ export default {
     handleCurrentPageChange:function(currentPage) {
       console.log(currentPage);
     },
+    tipbtnMousemove:function() {
+      console.log("------======------");
+    }
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
@@ -531,7 +540,7 @@ export default {
           //
           console.log(res.data);
           this.afib_num = res.data.afib;
-          this.spo2h_num = res.data.spo2h;
+          this.spo2h_num = res.data.spo2h?res.data.spo2h:0;
           this.sbp_num = res.data.sbp;
           this.temp_num = res.data.temp;
         }
@@ -584,11 +593,6 @@ a {
 #tip {
   text-align: center;
 }
-
-.user_icon {background:url(./../../static/img/icon3.png) no-repeat;}
-.password_icon {background:url(./../../static/img/icon.png) no-repeat;}
-.login .user_input .user_icon.active {background:url(./../../static/img/icon4.png) no-repeat;}
-.login .password_input .password_icon.active {background:url(./../../static/img/icon2.png) no-repeat;}
 
 /*.login_logo{width:1200px;height:88px;margin:0 auto;background:#fff url(./../../static/img/indexlogo.png) 0 center no-repeat;}
 .login {width:100%;height:480px;margin:0px auto 0;background:url(./../static/img/loginimg.png) ;background-size:100% 100%;}*/
