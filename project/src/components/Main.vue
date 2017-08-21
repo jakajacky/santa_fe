@@ -182,8 +182,18 @@
 
             </div>
           </span>
+          <span class="readDoc">• PWV参考解读文档</span>
         </div>
         <div class="margin-9">  </div>
+        <!-- 血压趋势柱状图表 -->
+        <div id="user_bloodPresure_charts_id" class="user_bloodPresure_charts">
+
+        </div>
+
+        <!-- 血压趋势柱状图表 -->
+        <div id="user_bloodPresure_charts_id_" class="user_bloodPresure_charts_">
+
+        </div>
 
       </div>
 
@@ -262,6 +272,104 @@ var option = {
           {value:0,name:'60-80岁'},
           {value:0,name:'大于80岁'}]
     }]
+};
+
+var option_histogram = {
+    title: {
+        text: '收缩压',
+        left: '88%',
+        top: '3%',
+        textAlign: 'center',
+        textBaseline: 'middle',
+        textStyle: {
+            color: '#13ce66',
+            fontWeight: 'normal',
+            // fontSize: 14
+        }
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    // legend: {
+    //     data: ['2011年', '2012年']
+    // },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01],
+        splitLine: {
+          show: false
+        }
+    },
+    yAxis: {
+        type: 'category',
+        name: 'mmHg',
+        data: ['<90','90~110','111~120','121~139','140~159','160~179','≥180']
+    },
+    series: [
+        {
+            name: '2011年',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744, 630230]
+        },
+    ]
+};
+
+var option_histogram_ = {
+    title: {
+        text: '舒张压',
+        left: '88%',
+        top: '3%',
+        textAlign: 'center',
+        textBaseline: 'middle',
+        textStyle: {
+            color: '#13ce66',
+            fontWeight: 'normal',
+            // fontSize: 14
+        }
+    },
+    tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+            type: 'shadow'
+        }
+    },
+    // legend: {
+    //     data: ['2011年', '2012年']
+    // },
+    grid: {
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        containLabel: true
+    },
+    xAxis: {
+        type: 'value',
+        boundaryGap: [0, 0.01],
+        splitLine: {
+          show: false
+        }
+    },
+    yAxis: {
+        type: 'category',
+        name: 'mmHg',
+        data: ['<60','60~70','71~80','81~90','≥90']
+    },
+    series: [
+        {
+            name: '2011年',
+            type: 'bar',
+            data: [18203, 23489, 29034, 104970, 131744]
+        },
+    ]
 };
 
 //按照西方国家的方法显示数字
@@ -477,8 +585,13 @@ export default {
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
+    var myChart_histogram = echarts.init(document.getElementById('user_bloodPresure_charts_id'));
+    var myChart_histogram_ = echarts.init(document.getElementById('user_bloodPresure_charts_id_'));
     var myChart = echarts.init(document.getElementById('age_gender_charts_id'));
+
     // 使用刚指定的配置项和数据显示图表。
+    myChart_histogram.setOption(option_histogram);
+    myChart_histogram_.setOption(option_histogram_);
     myChart.setOption(option);
     // 网络请求一
     let data = {

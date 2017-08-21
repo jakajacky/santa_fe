@@ -88,7 +88,7 @@
 
 .content_bg {
   background: #fff;
-  height: 1000px;
+  height: 1200px;
   width: 1200px;
   margin: 0 auto;
   padding-top: 20px;
@@ -509,6 +509,7 @@ this.watch_heartrate_btn_active*/
   float: left;
   margin-left: 20px;
   border: 1px solid #ddd;
+  height: 400px;
 }
 
 .user_bloodPresure_trend_nav {
@@ -531,10 +532,32 @@ this.watch_heartrate_btn_active*/
   margin-left: 20px;
   vertical-align: middle;
   width: 23px;
-  height: 23px;
+  height: 24px;
   background: url(./../../static/img/query.png) no-repeat;
 }
 
+.user_bloodPresure_charts {
+  height: 300px;
+  width: 530px;
+  background: #333;
+  float: left;
+}
+.user_bloodPresure_charts_ {
+  height: 300px;
+  width: 530px;
+  background: #333;
+  float: right;
+}
+
+/* 可复用的解读文档按钮*/
+.readDoc {
+  color: #55c7f6;
+  float: right;
+  line-height: 50px;
+  margin-right: 30px;
+}
+
+/* 自定义浮动窗*/
 .tooltip.active {
   position: absolute;
   background: #000;
