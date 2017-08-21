@@ -177,8 +177,8 @@
       <div class="user_bloodPresure_trend">
         <div class="user_bloodPresure_trend_nav">
           <span class="title">用户血压趋势分布</span>
-          <span class="tipbtn" v-on:mouseover="tipbtnMousemove">
-            <div class="tooltip">
+          <span class="tipbtn" v-on:mouseover="tipbtnMousemove" v-on:mouseout="tipbtnMouseout">
+            <div class="tooltip" v-bind:class="{'active':tooltip_isactive}">
 
             </div>
           </span>
@@ -326,6 +326,7 @@ export default {
       spo2h_num:0,
       sbp_num:0,
       temp_num:0,
+      tooltip_isactive:false,
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -467,6 +468,11 @@ export default {
     },
     tipbtnMousemove:function() {
       console.log("------======------");
+      this.tooltip_isactive = true;
+    },
+    tipbtnMouseout:function() {
+      console.log("------+++++------");
+      this.tooltip_isactive = false;
     }
   },
   mounted() {

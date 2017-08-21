@@ -535,24 +535,10 @@ this.watch_heartrate_btn_active*/
   background: url(./../../static/img/query.png) no-repeat;
 }
 
-.tooltip {
-  position: absolute;
-  background: #000;
-  /*opacity: 0.5;*/
-  border-radius: 10px;
-  width: 200px;
-  height: 200px;
-  left: 20px;
-  top: -200px;
-  animation: fade-in;/*动画名称*/
-  animation-duration: 1.5s;/*动画持续时间*/
-  -webkit-animation:fade-in 1.5s;/*针对webkit内核*/
-
-}
-
 .tooltip.active {
   position: absolute;
   background: #000;
+  display:block;
   opacity: 0.5;
   border-radius: 10px;
   width: 200px;
@@ -560,8 +546,24 @@ this.watch_heartrate_btn_active*/
   left: 20px;
   top: -200px;
   animation: fade-in;/*动画名称*/
-  animation-duration: 1.5s;/*动画持续时间*/
-  -webkit-animation:fade-in 1.5s;/*针对webkit内核*/
+  animation-duration: 1.0s;/*动画持续时间*/
+  -webkit-animation:fade-in 1.0s;/*针对webkit内核*/
+
+}
+
+.tooltip {
+  position: absolute;
+  display: none;
+  background: #000;
+  opacity: 0;
+  border-radius: 10px;
+  width: 200px;
+  height: 200px;
+  left: 20px;
+  top: -200px;
+  animation: fade-out;/*动画名称*/
+  animation-duration: 1.0s;/*动画持续时间*/
+  -webkit-animation:fade-out 1.0s;/*针对webkit内核*/
 }
 
 .margin-9 {
@@ -570,11 +572,22 @@ this.watch_heartrate_btn_active*/
 
 @keyframes fade-in {
     0% {opacity: 0;}/*初始状态 透明度为0*/
-    40% {opacity: 0;}/*过渡状态 透明度为0*/
+    40% {opacity: 0.3;}/*过渡状态 透明度为0*/
     100% {opacity: 0.5;}/*结束状态 透明度为1*/
 }
 @-webkit-keyframes fade-in {/*针对webkit内核*/
     0% {opacity: 0;}
-    40% {opacity: 0;}
+    40% {opacity: 0.3;}
     100% {opacity: 0.5;}
+}
+
+@keyframes fade-out {
+    0% {opacity: 0.5;}/*初始状态 透明度为0*/
+    40% {opacity: 0.3;}/*过渡状态 透明度为0*/
+    100% {opacity: 0;}/*结束状态 透明度为1*/
+}
+@-webkit-keyframes fade-out {/*针对webkit内核*/
+    0% {opacity: 0.5;}
+    40% {opacity: 0.3;}
+    100% {opacity: 0;}
 }
