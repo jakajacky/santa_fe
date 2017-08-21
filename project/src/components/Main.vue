@@ -195,6 +195,12 @@
 
         </div>
 
+        <span class="user_bloodPresure_charts-span">本周用户收缩压趋势分布</span>
+        <span class="user_bloodPresure_charts_-span">本周用户舒张压趋势分布</span>
+        <div class="margin-10">   </div>
+        <span class="user_bloodPresure_charts-span-content">经本周测量统计，共有1位用户收缩压高于140 mmHg，落于高血压范围，其中共有0用户收缩压高于180 mmHg，属于严重高血压；共有1位用户收缩压低于90 mmHg，属于低血压范围。</span>
+        <span class="user_bloodPresure_charts_-span-content">经本周测量统计，共有1位用户舒张压高于90 mmHg，属于高血压范围，其中共有0用户舒张压高于100 mmHg，属于严重高血压；共有3位用户舒张压低于60 mmHg，属于低血压范畴。</span>
+
       </div>
 
     </div>
@@ -305,6 +311,11 @@ var option_histogram = {
     xAxis: {
         type: 'value',
         boundaryGap: [0, 0.01],
+        axisLabel: {
+          formatter:function(val) {
+              return Math.floor((val/223.0) * 100) + '%';
+          }
+        },
         splitLine: {
           show: false
         }
@@ -316,9 +327,9 @@ var option_histogram = {
     },
     series: [
         {
-            name: '2011年',
+            name: '',
             type: 'bar',
-            data: [18203, 23489, 29034, 104970, 131744, 630230]
+            data: [1, 33, 95, 88, 4, 2, 0]
         },
     ]
 };
@@ -354,6 +365,11 @@ var option_histogram_ = {
     xAxis: {
         type: 'value',
         boundaryGap: [0, 0.01],
+        axisLabel: {
+          formatter:function(val) {
+              return Math.floor((val/223.0) * 100) + '%';
+          }
+        },
         splitLine: {
           show: false
         }
@@ -365,9 +381,9 @@ var option_histogram_ = {
     },
     series: [
         {
-            name: '2011年',
+            name: '',
             type: 'bar',
-            data: [18203, 23489, 29034, 104970, 131744]
+            data: [3, 27, 171, 19, 3]
         },
     ]
 };

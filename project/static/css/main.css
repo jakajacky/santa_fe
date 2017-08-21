@@ -88,7 +88,7 @@
 
 .content_bg {
   background: #fff;
-  height: 1200px;
+  height: 1250px;
   width: 1200px;
   margin: 0 auto;
   padding-top: 20px;
@@ -508,8 +508,9 @@ this.watch_heartrate_btn_active*/
 .user_bloodPresure_trend {
   float: left;
   margin-left: 20px;
+  margin-right: 20px;
   border: 1px solid #ddd;
-  height: 400px;
+  height: 500px;
 }
 
 .user_bloodPresure_trend_nav {
@@ -538,16 +539,46 @@ this.watch_heartrate_btn_active*/
 
 .user_bloodPresure_charts {
   height: 300px;
-  width: 530px;
+  width: 570px;
   background: #333;
   float: left;
+  border-right: 1px solid #ddd;
 }
+
+.user_bloodPresure_charts-span {
+  float: left;
+  width: 50%;
+  text-align: center;
+}
+
+.user_bloodPresure_charts-span-content {
+  float: left;
+  width: 42%;
+  margin-left: 40px;
+  font-size: 14px;
+  color: #333;
+}
+
 .user_bloodPresure_charts_ {
   height: 300px;
-  width: 530px;
+  width: 570px;
   background: #333;
   float: right;
 }
+.user_bloodPresure_charts_-span {
+  float: right;
+  width: 50%;
+  text-align: center;
+}
+
+.user_bloodPresure_charts_-span-content {
+  float: right;
+  width: 42%;
+  margin-right: 40px;
+  font-size: 14px;
+  color: #333;
+}
+
 
 /* 可复用的解读文档按钮*/
 .readDoc {
@@ -591,6 +622,12 @@ this.watch_heartrate_btn_active*/
 
 .margin-9 {
   height: 20px;
+}
+
+.margin-10 {
+  height: 20px;
+  float: left;
+  width: 100%;
 }
 
 @keyframes fade-in {
