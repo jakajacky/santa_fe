@@ -366,6 +366,30 @@ var option_histogram = {
             name: '',
             type: 'bar',
             barWidth: 20,
+            itemStyle: {
+              normal: {
+                barBorderRadius: 7,
+                color: function(param) {
+                  console.log('回调：'+param.name);
+                  var colorList = ['#fc8383', '#fec25d', '#00d545'];
+                  if (param.name=='<90') {
+                    return colorList[0];
+                  } else if (param.name=='90~110') {
+                    return colorList[1];
+                  } else if (param.name=='111~120') {
+                    return colorList[1];
+                  } else if (param.name=='121~139') {
+                    return colorList[2];
+                  } else if (param.name=='140~159') {
+                    return colorList[2];
+                  } else if (param.name=='160~179') {
+                    return colorList[1];
+                  } else if (param.name=='≥180') {
+                    return colorList[0];
+                  }
+                },
+              },
+            },
             data: [1, 33, 95, 88, 4, 2, 0]
         },
     ]
@@ -421,6 +445,27 @@ var option_histogram_ = {
             name: '',
             type: 'bar',
             barWidth: 20,
+            itemStyle: {
+              normal: {
+                barBorderRadius: 7,
+                color: function(param) {
+                  console.log('回调：'+param.name);
+                  var colorList = ['#fc8383', '#fec25d', '#00d545'];
+                  if (param.name=='<60') {
+                    return colorList[0];
+                  } else if (param.name=='60~70') {
+                    return colorList[1];
+                  } else if (param.name=='71~80') {
+                    return colorList[2];
+                  } else if (param.name=='81~90') {
+                    return colorList[1];
+                  } else if (param.name=='≥90') {
+                    return colorList[0];
+                  }
+                  return '#ddd';
+                },
+              },
+            },
             data: [3, 27, 171, 19, 3]
         },
     ]
