@@ -365,6 +365,7 @@ var option_histogram = {
         {
             name: '',
             type: 'bar',
+            barWidth: 20,
             data: [1, 33, 95, 88, 4, 2, 0]
         },
     ]
@@ -419,6 +420,7 @@ var option_histogram_ = {
         {
             name: '',
             type: 'bar',
+            barWidth: 20,
             data: [3, 27, 171, 19, 3]
         },
     ]

@@ -597,7 +597,7 @@ this.watch_heartrate_btn_active*/
   background: #000;
   display:block;
   opacity: 0.7;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 330px;
   height: 200px;
   left: 20px;
@@ -613,7 +613,7 @@ this.watch_heartrate_btn_active*/
   display: none;
   background: #000;
   opacity: 0.0;
-  border-radius: 10px;
+  border-radius: 5px;
   width: 330px;
   height: 200px;
   left: 20px;
