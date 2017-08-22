@@ -462,7 +462,6 @@ var option_histogram_ = {
                   } else if (param.name=='≥90') {
                     return colorList[0];
                   }
-                  return '#ddd';
                 },
               },
             },
@@ -534,6 +533,8 @@ export default {
       sbp_num:0,
       temp_num:0,
       tooltip_isactive:false,
+      dbplist:[],
+      sbplist:[],
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -761,6 +762,59 @@ export default {
           this.spo2h_num = res.data.spo2h?res.data.spo2h:0;
           this.sbp_num = res.data.sbp;
           this.temp_num = res.data.temp;
+        }
+      })
+      .catch(error => {
+        console.log('fail:'+error);
+        this.$message({
+          message:error.message,
+          type:'error'
+        });
+      })
+    // 网络请求三
+    let data_3 = {
+      reg_id: 1,
+    }
+    reques.fetch('/energon-new/web/research/userdistribute', data_3)
+      .then(res => {
+        console.log('success:'+res);
+        if (res.code != 10000) {
+          this.$message({
+            message:res.msg,
+            type:'warning'
+          });
+        }
+        else {
+          this.$message({
+            message:'加载成功',
+            type:'success'
+          });
+          //
+          console.log(res.data.dbplist);
+          console.log(res.data.sbplist);
+          this.dbplist = res.data.dbplist;
+          this.sbplist = res.data.sbplist;
+
+          var sbp_total = 0;
+          var dbp_total = 0;
+          for (var i = 0; i < this.sbplist.length; i++) {
+            option_histogram.series[0].data[i] = this.sbplist[i].count
+            sbp_total += this.sbplist[i].count;
+          }
+          for (var i = 0; i < this.dbplist.length; i++) {
+            option_histogram_.series[0].data[i] = this.dbplist[i].count
+            dbp_total += this.dbplist[i].count;
+          }
+          option_histogram.xAxis.axisLabel.formatter = function(val){
+            return Math.floor((val/sbp_total) * 100) + '%';
+          }
+          option_histogram_.xAxis.axisLabel.formatter = function(val){
+            return Math.floor((val/dbp_total) * 100) + '%';
+          }
+
+          myChart_histogram.setOption(option_histogram);
+          myChart_histogram_.setOption(option_histogram_);
+
         }
       })
       .catch(error => {
