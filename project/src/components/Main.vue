@@ -179,7 +179,40 @@
           <span class="title">用户血压趋势分布</span>
           <span class="tipbtn" v-on:mouseover="tipbtnMousemove" v-on:mouseout="tipbtnMouseout">
             <div class="tooltip" v-bind:class="{'active':tooltip_isactive}">
-
+              <table>
+                <tbody>
+                  <tr>
+                    <th>类别</th>
+                    <th>收缩压</th>
+                    <th>舒张压</th>
+                  </tr>
+                  <tr>
+                    <td>正常高压</td>
+                    <td>120~139</td>
+                    <td>80~89</td>
+                  </tr>
+                  <tr>
+                    <td>高血压</td>
+                    <td>≥140</td>
+                    <td>≥90</td>
+                  </tr>
+                  <tr>
+                    <td>1级高血压(轻度)</td>
+                    <td>140~159</td>
+                    <td>90~99</td>
+                  </tr>
+                  <tr>
+                    <td>2级高血压(中度)</td>
+                    <td>160~179</td>
+                    <td>100~109</td>
+                  </tr>
+                  <tr>
+                    <td>3级高血压(重度)</td>
+                    <td>≥180</td>
+                    <td>≥110</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </span>
           <span class="readDoc">• PWV参考解读文档</span>
