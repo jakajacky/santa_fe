@@ -539,7 +539,7 @@ this.watch_heartrate_btn_active*/
 
 .user_bloodPresure_charts {
   height: 300px;
-  width: 570px;
+  width: 580px;
   background: #333;
   float: left;
   border-right: 1px solid #ddd;
@@ -549,6 +549,7 @@ this.watch_heartrate_btn_active*/
   float: left;
   width: 50%;
   text-align: center;
+  border-right: 1px solid #ddd;
 }
 
 .user_bloodPresure_charts-span-content {
@@ -557,17 +558,19 @@ this.watch_heartrate_btn_active*/
   margin-left: 40px;
   font-size: 14px;
   color: #333;
+  border-right: 1px solid #ddd;
+  padding-right: 53px;
 }
 
 .user_bloodPresure_charts_ {
   height: 300px;
-  width: 570px;
+  width: 575px;
   background: #333;
   float: right;
 }
 .user_bloodPresure_charts_-span {
   float: right;
-  width: 50%;
+  width: 49.9%;
   text-align: center;
 }
 
@@ -627,7 +630,26 @@ this.watch_heartrate_btn_active*/
 .margin-10 {
   height: 20px;
   float: left;
-  width: 100%;
+  width: 50%;
+  border-right: 1px solid #ddd;
+}
+.margin-13 {
+  height: 20px;
+  float: right;
+  width: 49.9%;
+}
+
+.margin-11 {
+  height: 20px;
+  float: left;
+  width: 50%;
+  border-right: 1px solid #ddd;
+}
+
+.margin-12 {
+  height: 20px;
+  float: right;
+  width: 575;
 }
 
 @keyframes fade-in {
