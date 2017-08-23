@@ -320,7 +320,7 @@ this.watch_heartrate_btn_active*/
   height: 50px;
   border-right-style: solid;
   border-right-color: lightgray;
-  border-right-width: 1px;
+  border-right-width: 0px;
 }
 
 .watch_heartrate_btn.active {
@@ -330,7 +330,7 @@ this.watch_heartrate_btn_active*/
   height: 50px;
   border-right-style: solid;
   border-right-color: lightgray;
-  border-right-width: 1px;
+  border-right-width: 0px;
 }
 
 .linto_bloodp_btn {
@@ -412,7 +412,7 @@ this.watch_heartrate_btn_active*/
   height: 50px;
   border-right-style: solid;
   border-right-color: lightgray;
-  border-right-width: 1px;
+  border-right-width: 0px;
 }
 .linto_temp_btn.active {
   background: #42a2d8;
@@ -421,7 +421,7 @@ this.watch_heartrate_btn_active*/
   height: 50px;
   border-right-style: solid;
   border-right-color: lightgray;
-  border-right-width: 1px;
+  border-right-width: 0px;
 }
 
 .margin-5 {
@@ -619,4 +619,8 @@ this.watch_heartrate_btn_active*/
   height: 20px;
   float: right;
   width: 575;
+}
+
+#tableafter::after {
+  width: 0px;
 }
