@@ -124,7 +124,7 @@
           :show-text="false"
           :text-inside="true"
           :stroke-width="16"
-          :percentage="100"
+          :percentage="this.male_num_perc"
           status="success">
         </el-progress>
         <div class="margin-7">  </div>
@@ -133,7 +133,7 @@
           :show-text="false"
           :text-inside="true"
           :stroke-width="16"
-          :percentage="100">
+          :percentage="this.female_num_perc">
         </el-progress>
       </div>
 
@@ -492,6 +492,8 @@ export default {
       age_total_num:0,
       male_num:0,
       female_num:0,
+      male_num_perc:0,
+      female_num_perc:0,
       leftData:{},
       afib_num:0,
       spo2h_num:0,
@@ -697,6 +699,8 @@ export default {
           // 男女比例
           this.male_num = this.leftData.genderlist[1].count;
           this.female_num = this.leftData.genderlist[0].count;
+          this.male_num_perc = Math.floor(this.male_num/(this.male_num+this.female_num)*100);
+          this.female_num_perc = Math.floor(this.female_num/(this.male_num+this.female_num)*100);
         }
       })
       .catch(error => {
