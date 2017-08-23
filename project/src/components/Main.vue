@@ -56,7 +56,7 @@
         <div class="data_type_nav" v-if="linto_btn_active">
           <input class="linto_bloodp_btn" type="button" v-on:click="linto_bloodp_btnDidClicked" v-bind:class="{'active':linto_bloodp_btn_active}" value="血压异常数据"></input><input class="linto_bloodo_btn" type="button" v-on:click="linto_bloodo_btnDidClicked" v-bind:class="{'active':linto_bloodo_btn_active}" value="血氧异常数据"><input class="linto_heartshake_btn" type="button" v-on:click="linto_heartshake_btnDidClicked" v-bind:class="{'active':linto_heartshake_btn_active}" value="房颤异常数据"></input><input class="linto_heartrate_btn" type="button" v-on:click="linto_heartrate_btnDidClicked" v-bind:class="{'active':linto_heartrate_btn_active}" value="心率异常数据"></input><input class="linto_temp_btn" type="button" v-on:click="linto_temp_btnDidClicked" v-bind:class="{'active':linto_temp_btn_active}" value="体温异常数据"></input>
         </div>
-        <el-table id="tableafter" class="abc" :data="tableData" stripe style="width: 100%;border-width:0px;">
+        <el-table class="abc" :data="tableData" stripe style="width: 100%;border-width:0px;">
           <el-table-column
             prop="user_id"
             label="用户ID"

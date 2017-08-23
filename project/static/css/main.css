@@ -621,6 +621,9 @@ this.watch_heartrate_btn_active*/
   width: 575;
 }
 
-#tableafter::after {
-  width: 0px;
+.el-table::after {
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 100%;
 }
