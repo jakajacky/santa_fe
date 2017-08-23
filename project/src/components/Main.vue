@@ -390,7 +390,7 @@ var option_histogram = {
                 },
               },
             },
-            data: [1, 33, 95, 88, 4, 2, 0]
+            data: []
         },
     ]
 };
@@ -465,7 +465,7 @@ var option_histogram_ = {
                 },
               },
             },
-            data: [3, 27, 171, 19, 3]
+            data: []
         },
     ]
 };

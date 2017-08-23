@@ -559,7 +559,8 @@ this.watch_heartrate_btn_active*/
   font-size: 14px;
   color: #333;
   border-right: 1px solid #ddd;
-  padding-right: 53px;
+  padding-left: 10px;
+  padding-right: 43px;
 }
 
 .user_bloodPresure_charts_ {
