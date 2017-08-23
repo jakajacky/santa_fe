@@ -43,7 +43,7 @@
 export default {
   data() {
     return {
-      
+
     }
   },
   props: {
@@ -113,4 +113,27 @@ export default {
 .tooltip table td:first-child {
   width: 120px;
 }
+
+@keyframes fade-in {
+    0% {opacity: 0;}/*初始状态 透明度为0*/
+    40% {opacity: 0;}/*过渡状态 透明度为0*/
+    100% {opacity: 0.7;}/*结束状态 透明度为1*/
+}
+@-webkit-keyframes fade-in {/*针对webkit内核*/
+    0% {opacity: 0;}
+    40% {opacity: 0;}
+    100% {opacity: 0.7;}
+}
+
+@keyframes fade-out {
+    0% {opacity: 0.7;}/*初始状态 透明度为0*/
+    40% {opacity: 0.3;}/*过渡状态 透明度为0*/
+    100% {opacity: 0;}/*结束状态 透明度为1*/
+}
+@-webkit-keyframes fade-out {/*针对webkit内核*/
+    0% {opacity: 0.7;}
+    40% {opacity: 0.3;}
+    100% {opacity: 0;}
+}
+
 </style>

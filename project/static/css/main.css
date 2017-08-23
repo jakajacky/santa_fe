@@ -592,65 +592,6 @@ this.watch_heartrate_btn_active*/
   margin-right: 30px;
 }
 
-/* 自定义浮动窗*/
-.tooltip.active {
-  position: absolute;
-  background: #000;
-  display:block;
-  opacity: 0.7;
-  border-radius: 5px;
-  width: 330px;
-  height: 200px;
-  left: 20px;
-  top: -200px;
-  animation: fade-in;/*动画名称*/
-  animation-duration: 0.75s;/*动画持续时间*/
-  -webkit-animation:fade-in 0.75s;/*针对webkit内核*/
-
-}
-
-.tooltip {
-  position: absolute;
-  display: none;
-  background: #000;
-  opacity: 0.0;
-  border-radius: 5px;
-  width: 330px;
-  height: 200px;
-  left: 20px;
-  top: -200px;
-  animation: fade-out;/*动画名称*/
-  animation-duration: 0.75s;/*动画持续时间*/
-  -webkit-animation:fade-out 0.75s;/*针对webkit内核*/
-}
-
-.tooltip table {
-  width: 310px;
-  display: block;
-  color: #fff;
-  font-weight: bolder;
-  text-align: center;
-  margin: 10px;
-}
-
-.tooltip table tbody {
-  display: block;
-}
-
-.tooltip table tr {
-  line-height: 25px;
-}
-.tooltip table tr:first-child {
-  line-height: 40px;
-}
-
-.tooltip table td {
-  width: 100px;
-}
-.tooltip table td:first-child {
-  width: 120px;
-}
-
 .margin-9 {
   height: 20px;
 }
@@ -678,26 +619,4 @@ this.watch_heartrate_btn_active*/
   height: 20px;
   float: right;
   width: 575;
-}
-
-@keyframes fade-in {
-    0% {opacity: 0;}/*初始状态 透明度为0*/
-    40% {opacity: 0;}/*过渡状态 透明度为0*/
-    100% {opacity: 0.7;}/*结束状态 透明度为1*/
-}
-@-webkit-keyframes fade-in {/*针对webkit内核*/
-    0% {opacity: 0;}
-    40% {opacity: 0;}
-    100% {opacity: 0.7;}
-}
-
-@keyframes fade-out {
-    0% {opacity: 0.7;}/*初始状态 透明度为0*/
-    40% {opacity: 0.3;}/*过渡状态 透明度为0*/
-    100% {opacity: 0;}/*结束状态 透明度为1*/
-}
-@-webkit-keyframes fade-out {/*针对webkit内核*/
-    0% {opacity: 0.7;}
-    40% {opacity: 0.3;}
-    100% {opacity: 0;}
 }
