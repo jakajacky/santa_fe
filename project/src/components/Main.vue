@@ -178,42 +178,7 @@
         <div class="user_bloodPresure_trend_nav">
           <span class="title">用户血压趋势分布</span>
           <span class="tipbtn" v-on:mouseover="tipbtnMousemove" v-on:mouseout="tipbtnMouseout">
-            <div class="tooltip" v-bind:class="{'active':tooltip_isactive}">
-              <table>
-                <tbody>
-                  <tr>
-                    <th>类别</th>
-                    <th>收缩压</th>
-                    <th>舒张压</th>
-                  </tr>
-                  <tr>
-                    <td>正常高压</td>
-                    <td>120~139</td>
-                    <td>80~89</td>
-                  </tr>
-                  <tr>
-                    <td>高血压</td>
-                    <td>≥140</td>
-                    <td>≥90</td>
-                  </tr>
-                  <tr>
-                    <td>1级高血压(轻度)</td>
-                    <td>140~159</td>
-                    <td>90~99</td>
-                  </tr>
-                  <tr>
-                    <td>2级高血压(中度)</td>
-                    <td>160~179</td>
-                    <td>100~109</td>
-                  </tr>
-                  <tr>
-                    <td>3级高血压(重度)</td>
-                    <td>≥180</td>
-                    <td>≥110</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+            <Tooltip :show='tooltip_isactive'></Tooltip>
           </span>
           <span class="readDoc">• PWV参考解读文档</span>
         </div>
@@ -249,7 +214,7 @@ import App from './../App.vue'
 import reques from './../request/Request.vue'
 import echarts from 'echarts'
 import axios from 'axios'
-
+import Tooltip from './Tooltip.vue'
 // echart 配置
 // 指定图表的配置项和数据
 var option = {
@@ -581,6 +546,7 @@ export default {
   props: {
 
   },
+  components: {Tooltip},
   methods: {
     main_btnDidClicked:function() {
       this.main_btn_active = true;
