@@ -93,6 +93,18 @@
   margin: 0 auto;
   padding-top: 20px;
 }
+
+.user {
+  height: 1150px;
+}
+.content_bg_user {
+  background: #fff;
+  height: 650px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 20px;
+}
+
 /**/
 .total_statistic {
   background: #fff;
@@ -629,4 +641,18 @@ this.watch_heartrate_btn_active*/
     right: 0;
     width: 0;
     height: 100%;
+}
+
+/* Enter and leave animations can use different */
+/* durations and timing functions.              */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }

@@ -34,6 +34,24 @@ const router = new VueRouter({
           resolve(require('./components/Main.vue'));
         });
       },
+      children:[
+        {
+          path: 'maincontent',
+          component(resolve) {
+            require.ensure(['./components/mainContent.vue'], ()=>{
+              resolve(require('./components/mainContent.vue'));
+            });
+          },
+        },
+        {
+          path: 'mainuser',
+          component(resolve) {
+            require.ensure(['./components/mainUser.vue'], ()=>{
+              resolve(require('./components/mainUser.vue'));
+            });
+          },
+        }
+      ],
 
       meta: {requiresAuth: true}
     }

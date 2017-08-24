@@ -70,7 +70,7 @@ export default {
       // 方便登录
       // this.content_name = '18600036466';
       // this.content_pwd = '123456';
-      this.$router.push({path:'/detail/'});
+      this.$router.push({path:'/detail/maincontent'});
       this.didClicked = true;
       let data = {
                 user_id: this.content_name,
