@@ -199,8 +199,8 @@
         <span class="user_bloodPresure_charts_-span">本周用户舒张压趋势分布</span>
         <div class="margin-10">   </div>
         <div class="margin-13">   </div>
-        <span class="user_bloodPresure_charts-span-content">经本周测量统计，共有1位用户收缩压高于140 mmHg，落于高血压范围，其中共有0用户收缩压高于180 mmHg，属于严重高血压；共有1位用户收缩压低于90 mmHg，属于低血压范围。</span>
-        <span class="user_bloodPresure_charts_-span-content">经本周测量统计，共有1位用户舒张压高于90 mmHg，属于高血压范围，其中共有0用户舒张压高于100 mmHg，属于严重高血压；共有3位用户舒张压低于60 mmHg，属于低血压范畴。</span>
+        <span class="user_bloodPresure_charts-span-content">经本周测量统计，共有{{this.sbp_num_140}}位用户收缩压高于140 mmHg，落于高血压范围，其中共有{{this.sbp_num_180}}用户收缩压高于180 mmHg，属于严重高血压；共有{{this.sbp_num_90}}位用户收缩压低于90 mmHg，属于低血压范围。</span>
+        <span class="user_bloodPresure_charts_-span-content">经本周测量统计，共有{{this.dbp_num_90}}位用户舒张压高于90 mmHg，属于高血压范围，其中共有{{this.dbp_num_100}}用户舒张压高于100 mmHg，属于严重高血压；共有{{this.dbp_num_60}}位用户舒张压低于60 mmHg，属于低血压范畴。</span>
 
       </div>
 
@@ -502,6 +502,12 @@ export default {
       tooltip_isactive:false,
       dbplist:[],
       sbplist:[],
+      sbp_num_140:0,
+      sbp_num_180:0,
+      sbp_num_90:0,
+      dbp_num_90:0,
+      dbp_num_100:0,
+      dbp_num_60:0,
       tableData: [{
         user_id:'18515982821',
         date: '2016-05-02 22:55:30',
@@ -764,6 +770,14 @@ export default {
           console.log(res.data.sbplist);
           this.dbplist = res.data.dbplist;
           this.sbplist = res.data.sbplist;
+
+          this.sbp_num_90 = this.sbplist[0].count;
+          this.sbp_num_140 = this.sbplist[4].count+this.sbplist[5].count+this.sbplist[6].count;
+          this.sbp_num_180 = this.sbplist[6].count;
+
+          this.dbp_num_60 = this.dbplist[0].count;
+          this.dbp_num_90 = this.dbplist[4].count;
+          this.dbp_num_100 = 0;
 
           var sbp_total = 0;
           var dbp_total = 0;
