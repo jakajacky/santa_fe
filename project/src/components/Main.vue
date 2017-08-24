@@ -18,7 +18,7 @@
       </el-dropdown>
     </div>
     <div class="margin-1"> </div>
-    <transition name="slide-fade">
+    <transition name="fade">
       <router-view></router-view>
     </transition>
   </div>

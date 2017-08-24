@@ -87,7 +87,7 @@
         :current-page.sync="currentPage1"
         :page-size="8"
         layout="total, prev, pager, next"
-        :total="25">
+        :total="this.tableData.length">
       </el-pagination>
     </div>
 
@@ -323,11 +323,11 @@ var option_histogram = {
                   } else if (param.name=='90~110') {
                     return colorList[1];
                   } else if (param.name=='111~120') {
-                    return colorList[1];
+                    return colorList[2];
                   } else if (param.name=='121~139') {
                     return colorList[2];
                   } else if (param.name=='140~159') {
-                    return colorList[2];
+                    return colorList[1];
                   } else if (param.name=='160~179') {
                     return colorList[1];
                   } else if (param.name=='≥180') {
@@ -769,10 +769,10 @@ export default {
                       fetchDatas('sbp',1)
                         .then(res => {
                           this.tableData = res;
-                          console.log('tableData:'+this.tableData);
+                          console.log('tableData:'+this.tableData.length);
                         })
                         .catch(error => {
-                          
+
                         })
 
                     }
