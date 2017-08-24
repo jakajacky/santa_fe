@@ -91,7 +91,7 @@ export default {
               type:'success'
             });
             // 路由
-            this.$router.push({path:'/detail/'});
+            this.$router.push({path:'/detail/maincontent'});
           }
         })
         .catch(error => {

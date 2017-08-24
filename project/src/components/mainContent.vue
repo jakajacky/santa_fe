@@ -39,21 +39,21 @@
       </div>
       <el-table :data="tableData" stripe style="width: 100%;border-width:0px;">
         <el-table-column
-          prop="user_id"
+          prop="login_name"
           label="用户ID"
           width="180">
         </el-table-column>
         <el-table-column
-          prop="date"
+          prop="create_date"
           label="时间"
           width="180">
         </el-table-column>
         <el-table-column
-          prop="shousuo"
+          prop="sbp"
           label="收缩压">
         </el-table-column>
         <el-table-column
-          prop="shuzhang"
+          prop="dbp"
           label="舒张压">
         </el-table-column>
         <el-table-column
@@ -195,6 +195,7 @@ import reques from './../request/Request.vue'
 import echarts from 'echarts'
 import axios from 'axios'
 import Tooltip from './Tooltip.vue'
+import {Message} from 'element-ui'
 // echart 配置
 // 指定图表的配置项和数据
 var option = {
@@ -433,11 +434,53 @@ var cutStr=function(str){
     if(reg.test(newStr)){
         newStr.shift();
         return newStr.join("");
-          }else{
-              return newStr.join("");
-          }
+    }else{
+        return newStr.join("");
+    }
 
 };
+
+// 分类、分页加载
+var fetchDatas=function(type,page){
+  return new Promise((resolve,reject) => {
+    // 网络请求四
+    let data_4 = {
+      fields: type,
+      reg_id: page,
+      start_pos: 8,
+    }
+    reques.fetch('/energon-new/web/research/datas', data_4)
+      .then(res => {
+        console.log('success:'+res);
+        if (res.code != 10000) {
+          Message({
+            message:res.msg,
+            type:'warning'
+          });
+          reject(res.msg);
+        }
+        else {
+          Message({
+            message:'加载成功',
+            type:'success'
+          });
+          //
+          res.data.shift();
+          console.log('list:'+res.data);
+          resolve(res.data);
+        }
+      })
+      .catch(error => {
+        console.log('fail:'+error);
+        Message({
+          message:error.message,
+          type:'error'
+        });
+        reject(error);
+      })
+
+  });
+}
 
 export default {
   name: 'app',
@@ -488,47 +531,7 @@ export default {
       dbp_num_90:0,
       dbp_num_100:0,
       dbp_num_60:0,
-      tableData: [{
-        user_id:'18515982821',
-        date: '2016-05-02 22:55:30',
-        shousuo: '160',
-        shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }, {
-         user_id:'18515982821',
-         date: '2016-05-02 22:55:30',
-         shousuo: '160',
-         shuzhang: '90',
-       }]
+      tableData:[],
     }
   },
   props: {
@@ -661,10 +664,10 @@ export default {
           });
         }
         else {
-          this.$message({
-            message:'加载成功',
-            type:'success'
-          });
+          // this.$message({
+          //   message:'加载成功',
+          //   type:'success'
+          // });
           //
           console.log(res.data);
           this.leftData = res.data;
@@ -687,6 +690,112 @@ export default {
           this.female_num = this.leftData.genderlist[0].count;
           this.male_num_perc = Math.floor(this.male_num/(this.male_num+this.female_num)*100);
           this.female_num_perc = Math.floor(this.female_num/(this.male_num+this.female_num)*100);
+
+          // 网络请求二
+          reques.receive('/energon-new/web/linktop/counts')
+            .then(res => {
+              console.log('success:'+res);
+              if (res.code != 10000) {
+                this.$message({
+                  message:res.msg,
+                  type:'warning'
+                });
+              }
+              else {
+                // this.$message({
+                //   message:'加载成功',
+                //   type:'success'
+                // });
+                //
+                console.log(res.data);
+                this.afib_num = res.data.afib;
+                this.spo2h_num = res.data.spo2h?res.data.spo2h:0;
+                this.sbp_num = res.data.sbp;
+                this.temp_num = res.data.temp;
+
+                // 网络请求三
+                let data_3 = {
+                  reg_id: 1,
+                }
+                reques.fetch('/energon-new/web/research/userdistribute', data_3)
+                  .then(res => {
+                    console.log('success:'+res);
+                    if (res.code != 10000) {
+                      this.$message({
+                        message:res.msg,
+                        type:'warning'
+                      });
+                    }
+                    else {
+                      // this.$message({
+                      //   message:'加载成功',
+                      //   type:'success'
+                      // });
+                      //
+                      console.log(res.data.dbplist);
+                      console.log(res.data.sbplist);
+                      this.dbplist = res.data.dbplist;
+                      this.sbplist = res.data.sbplist;
+
+                      this.sbp_num_90 = this.sbplist[0].count;
+                      this.sbp_num_140 = this.sbplist[4].count+this.sbplist[5].count+this.sbplist[6].count;
+                      this.sbp_num_180 = this.sbplist[6].count;
+
+                      this.dbp_num_60 = this.dbplist[0].count;
+                      this.dbp_num_90 = this.dbplist[4].count;
+                      this.dbp_num_100 = 0;
+
+                      var sbp_total = 0;
+                      var dbp_total = 0;
+                      for (var i = 0; i < this.sbplist.length; i++) {
+                        option_histogram.series[0].data[i] = this.sbplist[i].count
+                        sbp_total += this.sbplist[i].count;
+                      }
+                      for (var i = 0; i < this.dbplist.length; i++) {
+                        option_histogram_.series[0].data[i] = this.dbplist[i].count
+                        dbp_total += this.dbplist[i].count;
+                      }
+                      option_histogram.xAxis.axisLabel.formatter = function(val){
+                        return Math.floor((val/sbp_total) * 100) + '%';
+                      }
+                      option_histogram_.xAxis.axisLabel.formatter = function(val){
+                        return Math.floor((val/dbp_total) * 100) + '%';
+                      }
+
+                      myChart_histogram.setOption(option_histogram);
+                      myChart_histogram_.setOption(option_histogram_);
+
+                      // 网络请求4
+                      fetchDatas('sbp',1)
+                        .then(res => {
+                          this.tableData = res;
+                          console.log('tableData:'+this.tableData);
+                        })
+                        .catch(error => {
+                          
+                        })
+
+                    }
+                  })
+                  .catch(error => {
+                    console.log('fail:'+error);
+                    this.$message({
+                      message:error.message,
+                      type:'error'
+                    });
+                  })
+
+
+              }
+            })
+            .catch(error => {
+              console.log('fail:'+error);
+              this.$message({
+                message:error.message,
+                type:'error'
+              });
+            })
+
         }
       })
       .catch(error => {
@@ -696,99 +805,6 @@ export default {
           type:'error'
         });
       })
-
-    // 网络请求二
-    reques.receive('/energon-new/web/linktop/counts')
-      .then(res => {
-        console.log('success:'+res);
-        if (res.code != 10000) {
-          this.$message({
-            message:res.msg,
-            type:'warning'
-          });
-        }
-        else {
-          this.$message({
-            message:'加载成功',
-            type:'success'
-          });
-          //
-          console.log(res.data);
-          this.afib_num = res.data.afib;
-          this.spo2h_num = res.data.spo2h?res.data.spo2h:0;
-          this.sbp_num = res.data.sbp;
-          this.temp_num = res.data.temp;
-        }
-      })
-      .catch(error => {
-        console.log('fail:'+error);
-        this.$message({
-          message:error.message,
-          type:'error'
-        });
-      })
-    // 网络请求三
-    let data_3 = {
-      reg_id: 1,
-    }
-    reques.fetch('/energon-new/web/research/userdistribute', data_3)
-      .then(res => {
-        console.log('success:'+res);
-        if (res.code != 10000) {
-          this.$message({
-            message:res.msg,
-            type:'warning'
-          });
-        }
-        else {
-          this.$message({
-            message:'加载成功',
-            type:'success'
-          });
-          //
-          console.log(res.data.dbplist);
-          console.log(res.data.sbplist);
-          this.dbplist = res.data.dbplist;
-          this.sbplist = res.data.sbplist;
-
-          this.sbp_num_90 = this.sbplist[0].count;
-          this.sbp_num_140 = this.sbplist[4].count+this.sbplist[5].count+this.sbplist[6].count;
-          this.sbp_num_180 = this.sbplist[6].count;
-
-          this.dbp_num_60 = this.dbplist[0].count;
-          this.dbp_num_90 = this.dbplist[4].count;
-          this.dbp_num_100 = 0;
-
-          var sbp_total = 0;
-          var dbp_total = 0;
-          for (var i = 0; i < this.sbplist.length; i++) {
-            option_histogram.series[0].data[i] = this.sbplist[i].count
-            sbp_total += this.sbplist[i].count;
-          }
-          for (var i = 0; i < this.dbplist.length; i++) {
-            option_histogram_.series[0].data[i] = this.dbplist[i].count
-            dbp_total += this.dbplist[i].count;
-          }
-          option_histogram.xAxis.axisLabel.formatter = function(val){
-            return Math.floor((val/sbp_total) * 100) + '%';
-          }
-          option_histogram_.xAxis.axisLabel.formatter = function(val){
-            return Math.floor((val/dbp_total) * 100) + '%';
-          }
-
-          myChart_histogram.setOption(option_histogram);
-          myChart_histogram_.setOption(option_histogram_);
-
-        }
-      })
-      .catch(error => {
-        console.log('fail:'+error);
-        this.$message({
-          message:error.message,
-          type:'error'
-        });
-      })
-
   }
 }
 </script>
