@@ -72,6 +72,7 @@ export default {
       // this.content_pwd = '123456';
       this.$router.push({path:'/detail/maincontent'});
       this.didClicked = true;
+      var that = this;
       let data = {
                 user_id: this.content_name,
                 fields: this.content_pwd
@@ -86,12 +87,15 @@ export default {
             });
           }
           else {
-            this.$message({
-              message:'登录成功',
-              type:'success'
-            });
+            // this.$message({
+            //   message:'登录成功',
+            //   type:'success',
+            //   onClose:function(sender) {
+            //
+            //   }
+            // });
             // 路由
-            this.$router.push({path:'/detail/maincontent'});
+            that.$router.push({path:'/detail/maincontent'});
           }
         })
         .catch(error => {
