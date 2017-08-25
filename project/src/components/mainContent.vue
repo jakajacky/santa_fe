@@ -563,10 +563,12 @@ export default {
     linto_btnDidClicked:function() {
       this.watch_btn_active = false;
       this.linto_btn_active = true;
+      this.$router.push({path:'/detail/maincontent/linto'});
     },
     watch_btnDidClicked:function() {
       this.watch_btn_active = true;
       this.linto_btn_active = false;
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp'}});
     },
 
     watch_bloodp_btnDidClicked:function() {
@@ -574,24 +576,28 @@ export default {
       this.watch_heartshake_btn_active =false;
       this.watch_pwv_btn_active = false;
       this.watch_heartrate_btn_active = false;
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp'}});
     },
     watch_heartshake_btnDidClicked:function() {
       this.watch_bloodp_btn_active =false;
       this.watch_heartshake_btn_active =true;
       this.watch_pwv_btn_active = false;
       this.watch_heartrate_btn_active = false;
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib'}});
     },
     watch_pwv_btnDidClicked:function() {
       this.watch_bloodp_btn_active =false;
       this.watch_heartshake_btn_active =false;
       this.watch_pwv_btn_active = true;
       this.watch_heartrate_btn_active = false;
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv'}});
     },
     watch_heartrate_btnDidClicked:function() {
       this.watch_bloodp_btn_active =false;
       this.watch_heartshake_btn_active =false;
       this.watch_pwv_btn_active = false;
       this.watch_heartrate_btn_active = true;
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb'}});
     },
     linto_bloodp_btnDidClicked:function() {
       this.linto_bloodp_btn_active=true;
@@ -638,7 +644,85 @@ export default {
     tipbtnMouseout:function() {
       console.log("------+++++------");
       this.tooltip_isactive = false;
+    },
+    routerDidChanged:function() {
+      // 用来判定是 watch还是linto
+      console.log('params-id:'+this.$route.params.id);
+      if (this.$route.params.id=='linto') { // linto接口进行网络请求
+        this.watch_btn_active = false;
+        this.linto_btn_active = true;
+      }
+      else {                                // 量量接口进行网络请求
+        this.watch_btn_active = true;
+        this.linto_btn_active = false;
+        // 用来判定是 watch中的哪一个type
+        console.log('query-fields:'+this.$route.query.fields);
+        if (this.$route.query.fields=='sbp') { // 血压
+          this.watch_bloodp_btn_active =true;
+          this.watch_heartshake_btn_active =false;
+          this.watch_pwv_btn_active = false;
+          this.watch_heartrate_btn_active = false;
+
+          fetchDatas('sbp',1)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else if (this.$route.query.fields=='afib') {
+          this.watch_bloodp_btn_active =false;
+          this.watch_heartshake_btn_active =true;
+          this.watch_pwv_btn_active = false;
+          this.watch_heartrate_btn_active = false;
+
+          fetchDatas('afib',1)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else if (this.$route.query.fields=='pwv') {
+          this.watch_bloodp_btn_active =false;
+          this.watch_heartshake_btn_active =false;
+          this.watch_pwv_btn_active = true;
+          this.watch_heartrate_btn_active = false;
+
+          fetchDatas('pwv',1)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else if (this.$route.query.fields=='anb') {
+          this.watch_bloodp_btn_active =false;
+          this.watch_heartshake_btn_active =false;
+          this.watch_pwv_btn_active = false;
+          this.watch_heartrate_btn_active = true;
+
+          fetchDatas('anb',1)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+
+      }
     }
+  },
+  watch: {
+    '$route':'routerDidChanged'
   },
   mounted() {
     // 基于准备好的dom，初始化echarts实例
@@ -773,14 +857,9 @@ export default {
                       myChart_histogram_.setOption(option_histogram_);
 
                       // 网络请求4
-                      fetchDatas('sbp',1)
-                        .then(res => {
-                          this.tableData = res;
-                          console.log('tableData:'+this.tableData.length);
-                        })
-                        .catch(error => {
+                      this.routerDidChanged();
 
-                        })
+
 
                     }
                   })

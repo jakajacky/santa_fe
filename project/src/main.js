@@ -42,6 +42,17 @@ const router = new VueRouter({
               resolve(require('./components/mainContent.vue'));
             });
           },
+          children:[
+            {// 动态路由
+              path: ':id',
+              name: 'watch',
+              component(resolve) {
+                require.ensure(['./components/mainContent.vue'], ()=>{
+                  resolve(require('./components/mainContent.vue'));
+                });
+              },
+            }
+          ]
         },
         {
           path: 'mainuser',
