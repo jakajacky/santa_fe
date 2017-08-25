@@ -762,6 +762,13 @@ export default {
                         return Math.floor((val/dbp_total) * 100) + '%';
                       }
 
+                      option_histogram.tooltip.formatter = function(params,ticket,callback){
+                        return Math.floor((params[0].value/sbp_total)*100)+'%';
+                      }
+                      option_histogram_.tooltip.formatter = function(params,ticket,callback){
+                        return Math.floor((params[0].value/dbp_total)*100)+'%';
+                      }
+
                       myChart_histogram.setOption(option_histogram);
                       myChart_histogram_.setOption(option_histogram_);
 
