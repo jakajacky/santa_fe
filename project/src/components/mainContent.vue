@@ -701,7 +701,7 @@ export default {
         this.watch_btn_active = false;
         this.linto_btn_active = true;
       }
-      else {                                // 量量接口进行网络请求
+      else {  // 量量接口进行网络请求
         this.watch_btn_active = true;
         this.linto_btn_active = false;
         // 用来判定是 watch中的哪一个type
