@@ -70,7 +70,7 @@ export default {
       // 方便登录
       // this.content_name = '18600036466';
       // this.content_pwd = '123456';
-      this.$router.push({path:'/detail/maincontent/watch',query:{fields:'sbp'}});
+      this.$router.push({path:'/detail/maincontent/watch',query:{fields:'sbp',page:1}});
       this.didClicked = true;
       var that = this;
       let data = {
@@ -95,7 +95,7 @@ export default {
             //   }
             // });
             // 路由
-            that.$router.push({path:'/detail/maincontent/watch',query:{fields:'sbp'}});
+            that.$router.push({path:'/detail/maincontent/watch',query:{fields:'sbp',page:1}});
           }
         })
         .catch(error => {

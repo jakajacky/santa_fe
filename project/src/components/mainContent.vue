@@ -87,7 +87,7 @@
         :current-page.sync="currentPage1"
         :page-size="8"
         layout="total, prev, pager, next"
-        :total="this.tableData.length">
+        :total="this.tableData.length+10">
       </el-pagination>
     </div>
 
@@ -464,7 +464,7 @@ var fetchDatas=function(type,page){
           //   message:'加载成功',
           //   type:'success'
           // });
-          
+
           res.data.shift();
           console.log('list:'+res.data);
           resolve(res.data);
@@ -568,7 +568,7 @@ export default {
     watch_btnDidClicked:function() {
       this.watch_btn_active = true;
       this.linto_btn_active = false;
-      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp'}});
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp',page:1}});
     },
 
     watch_bloodp_btnDidClicked:function() {
@@ -576,28 +576,28 @@ export default {
       this.watch_heartshake_btn_active =false;
       this.watch_pwv_btn_active = false;
       this.watch_heartrate_btn_active = false;
-      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp'}});
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp',page:1}});
     },
     watch_heartshake_btnDidClicked:function() {
       this.watch_bloodp_btn_active =false;
       this.watch_heartshake_btn_active =true;
       this.watch_pwv_btn_active = false;
       this.watch_heartrate_btn_active = false;
-      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib'}});
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib',page:1}});
     },
     watch_pwv_btnDidClicked:function() {
       this.watch_bloodp_btn_active =false;
       this.watch_heartshake_btn_active =false;
       this.watch_pwv_btn_active = true;
       this.watch_heartrate_btn_active = false;
-      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv'}});
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv',page:1}});
     },
     watch_heartrate_btnDidClicked:function() {
       this.watch_bloodp_btn_active =false;
       this.watch_heartshake_btn_active =false;
       this.watch_pwv_btn_active = false;
       this.watch_heartrate_btn_active = true;
-      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb'}});
+      this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:1}});
     },
     linto_bloodp_btnDidClicked:function() {
       this.linto_bloodp_btn_active=true;
@@ -635,7 +635,53 @@ export default {
       this.linto_temp_btn_active=true;
     },
     handleCurrentPageChange:function(currentPage) {
-      console.log(currentPage);
+      this.currentPage1 = currentPage;
+      console.log('page:'+currentPage);
+      console.log('query-fields:'+this.$route.query.fields);
+      if (this.$route.query.fields=='sbp') { // 血压
+        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp',page:currentPage}});
+        fetchDatas('sbp',currentPage)
+          .then(res => {
+            this.tableData = res;
+            console.log('tableData:'+this.tableData.length);
+          })
+          .catch(error => {
+
+          })
+      }
+      else  if (this.$route.query.fields=='afib') {
+        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib',page:currentPage}});
+        fetchDatas('afib',currentPage)
+          .then(res => {
+            this.tableData = res;
+            console.log('tableData:'+this.tableData.length);
+          })
+          .catch(error => {
+
+          })
+      }
+      else if (this.$route.query.fields=='pwv') {
+        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv',page:currentPage}});
+        fetchDatas('pwv',currentPage)
+          .then(res => {
+            this.tableData = res;
+            console.log('tableData:'+this.tableData.length);
+          })
+          .catch(error => {
+
+          })
+      }
+      else if (this.$route.query.fields=='anb') {
+        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:currentPage}});
+        fetchDatas('anb',currentPage)
+          .then(res => {
+            this.tableData = res;
+            console.log('tableData:'+this.tableData.length);
+          })
+          .catch(error => {
+
+          })
+      }
     },
     tipbtnMousemove:function() {
       console.log("------======------");
@@ -646,7 +692,10 @@ export default {
       this.tooltip_isactive = false;
     },
     routerDidChanged:function() {
-      // 用来判定是 watch还是linto
+      // 用来判定 显示当前分页
+      this.currentPage1 = this.$route.query.page;
+
+      // 用来判定 watch还是linto
       console.log('params-id:'+this.$route.params.id);
       if (this.$route.params.id=='linto') { // linto接口进行网络请求
         this.watch_btn_active = false;
@@ -663,61 +712,33 @@ export default {
           this.watch_pwv_btn_active = false;
           this.watch_heartrate_btn_active = false;
 
-          fetchDatas('sbp',1)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
         }
         else if (this.$route.query.fields=='afib') {
           this.watch_bloodp_btn_active =false;
           this.watch_heartshake_btn_active =true;
           this.watch_pwv_btn_active = false;
           this.watch_heartrate_btn_active = false;
-
-          fetchDatas('afib',1)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
         }
         else if (this.$route.query.fields=='pwv') {
           this.watch_bloodp_btn_active =false;
           this.watch_heartshake_btn_active =false;
           this.watch_pwv_btn_active = true;
           this.watch_heartrate_btn_active = false;
-
-          fetchDatas('pwv',1)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
         }
         else if (this.$route.query.fields=='anb') {
           this.watch_bloodp_btn_active =false;
           this.watch_heartshake_btn_active =false;
           this.watch_pwv_btn_active = false;
           this.watch_heartrate_btn_active = true;
-
-          fetchDatas('anb',1)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
         }
+        fetchDatas(this.$route.query.fields,this.$route.query.page)
+          .then(res => {
+            this.tableData = res;
+            console.log('tableData:'+this.tableData.length);
+          })
+          .catch(error => {
 
+          })
       }
     }
   },
