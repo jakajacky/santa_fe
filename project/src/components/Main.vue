@@ -90,7 +90,8 @@ export default {
     main_btnDidClicked:function() {
       this.main_btn_active = true;
       this.user_btn_active = false;
-      this.$router.push({path:'/detail/maincontent'});
+      // this.$router.push({path:'/detail/maincontent'});
+      this.$router.push({path:'/detail/maincontent/watch',query:{fields:'sbp'}});
     },
     user_btnDidClicked:function() {
       this.main_btn_active = false;

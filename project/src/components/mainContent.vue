@@ -460,11 +460,11 @@ var fetchDatas=function(type,page){
           reject(res.msg);
         }
         else {
-          Message({
-            message:'加载成功',
-            type:'success'
-          });
-          //
+          // Message({
+          //   message:'加载成功',
+          //   type:'success'
+          // });
+          
           res.data.shift();
           console.log('list:'+res.data);
           resolve(res.data);
@@ -734,6 +734,11 @@ export default {
     myChart_histogram.setOption(option_histogram);
     myChart_histogram_.setOption(option_histogram_);
     myChart.setOption(option);
+
+
+    // 网络请求4
+    this.routerDidChanged();
+
     // 网络请求一
     let data = {
               reg_id: 1,
@@ -811,11 +816,11 @@ export default {
                       });
                     }
                     else {
-                      // this.$message({
-                      //   message:'加载成功',
-                      //   type:'success'
-                      // });
-                      //
+                      this.$message({
+                        message:'加载成功',
+                        type:'success'
+                      });
+
                       console.log(res.data.dbplist);
                       console.log(res.data.sbplist);
                       this.dbplist = res.data.dbplist;
@@ -856,8 +861,7 @@ export default {
                       myChart_histogram.setOption(option_histogram);
                       myChart_histogram_.setOption(option_histogram_);
 
-                      // 网络请求4
-                      this.routerDidChanged();
+
 
 
 
