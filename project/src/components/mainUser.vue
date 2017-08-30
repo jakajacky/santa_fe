@@ -2,7 +2,71 @@
 <div class="user">
   <div class="content_bg_user">
     <!-- 总数统计 -->
+    <div class="user_list_container">
+      <div class="user_list_nav">
+        <input type="button" value="[切换设备]"></input><span>脉搏波智能手表</span>
+      </div>
+      <div class="margin-100">  </div>
+      <el-table :data="tableData" stripe style="width: 100%;border-width:0px;">
+        <el-table-column
+          prop="login_name"
+          label="用户ID"
+          width="180">
+        </el-table-column>
+        <el-table-column
+          prop="create_date"
+          label="年龄">
+        </el-table-column>
+        <el-table-column
+          prop="sbp"
+          label="血压平均值">
+        </el-table-column>
+        <el-table-column
+          prop="dbp"
+          label="血压程度">
+        </el-table-column>
+        <el-table-column
+          prop="sbp"
+          label="PWV均值">
+        </el-table-column>
+        <el-table-column
+          prop="dbp"
+          label="PWV程度">
+        </el-table-column>
+        <el-table-column
+          prop="sbp"
+          label="慢性病史">
+        </el-table-column>
+        <el-table-column
+          prop="dbp"
+          label="房颤">
+        </el-table-column>
+        <el-table-column
+          prop="dbp"
+          label="数据量">
+        </el-table-column>
+        <el-table-column
+          prop="detail"
+          label="">
+          <template scope="scope">
+            <el-button
+              class="elbutton"
+              size="small"
+              type="text"
+              @click="handleDetail(scope.$index, scope.row)">数据详细</el-button>
+          </template>
+        </el-table-column>
 
+      </el-table>
+      <div class="margin-100">  </div>
+      <el-pagination style="float:right;padding-right:20px;"
+        @current-change="handleCurrentPageChange"
+        :current-page.sync="currentPage1"
+        :page-size="8"
+        layout="total, prev, pager, next"
+        :total="10">
+      </el-pagination>
+    </div>
 
   </div>
 </div>
@@ -19,7 +83,7 @@ export default {
   name: 'app',
   data () {
     return {
-
+      currentPage1:1,
     }
   },
   props: {

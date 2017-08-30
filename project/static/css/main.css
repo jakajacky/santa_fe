@@ -653,3 +653,38 @@ this.watch_heartrate_btn_active*/
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0
 }
+
+/*下面是 mainuser.vue的css样式*/
+.user .user_list_container {
+  margin: 0px 20px 0px 20px;
+  background: #ddd;
+  height: 630px;
+  border: 1px solid #ddd;
+}
+
+.user_list_nav {
+  background: #f3f5fa;
+  height: 45px;
+}
+
+.user_list_nav input {
+  background: #f3f5fa;
+  color: #55c7f6;
+  margin-left: 20px;
+  margin-right: 15px;
+
+}
+
+.user_list_nav span {
+  font-size: 17px;
+  line-height: 45px;
+}
+
+.user .el-table {
+  height: 525px;
+}
+
+.margin-100 {
+  height: 10px;
+
+}
