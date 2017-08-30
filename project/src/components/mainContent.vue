@@ -440,7 +440,7 @@ var cutStr=function(str){
 
 };
 
-// 分类、分页加载
+// 分类、分页加载 量量数据
 var fetchDatas=function(type,page){
   return new Promise((resolve,reject) => {
     // 网络请求四
@@ -480,7 +480,51 @@ var fetchDatas=function(type,page){
       })
 
   });
-}
+};
+
+// 分类、分页加载
+var fetchDatas_linto=function(type,page){
+  return new Promise((resolve,reject) => {
+    // 网络请求四
+    let data_4 = {
+      fields: type,
+      reg_id: page,
+      start_pos: 8,
+    }
+    reques.fetch('/energon-new/web/linktop/datas', data_4)
+      .then(res => {
+        console.log('success:'+res);
+        if (res.code != 10000) {
+          Message({
+            message:res.msg,
+            type:'warning'
+          });
+          reject(res.msg);
+        }
+        else {
+          // Message({
+          //   message:'加载成功',
+          //   type:'success'
+          // });
+
+          res.data.shift();
+          console.log('list:'+res.data);
+          resolve(res.data);
+        }
+      })
+      .catch(error => {
+        console.log('fail:'+error);
+        Message({
+          message:error.message,
+          type:'error'
+        });
+        reject(error);
+      })
+
+  });
+};
+
+
 
 export default {
   name: 'app',
@@ -563,7 +607,7 @@ export default {
     linto_btnDidClicked:function() {
       this.watch_btn_active = false;
       this.linto_btn_active = true;
-      this.$router.push({path:'/detail/maincontent/linto'});
+      this.$router.push({path:'/detail/maincontent/linto', query:{fields:'sbp',page:1}});
     },
     watch_btnDidClicked:function() {
       this.watch_btn_active = true;
@@ -605,6 +649,7 @@ export default {
       this.linto_heartshake_btn_active=false;
       this.linto_heartrate_btn_active=false;
       this.linto_temp_btn_active=false;
+      this.$router.push({path:'/detail/maincontent/linto', query:{fields:'sbp',page:1}});
     },
     linto_bloodo_btnDidClicked:function() {
       this.linto_bloodp_btn_active=false;
@@ -612,6 +657,7 @@ export default {
       this.linto_heartshake_btn_active=false;
       this.linto_heartrate_btn_active=false;
       this.linto_temp_btn_active=false;
+      this.$router.push({path:'/detail/maincontent/linto', query:{fields:'spo2h',page:1}});
     },
     linto_heartshake_btnDidClicked:function() {
       this.linto_bloodp_btn_active=false;
@@ -619,6 +665,7 @@ export default {
       this.linto_heartshake_btn_active=true;
       this.linto_heartrate_btn_active=false;
       this.linto_temp_btn_active=false;
+      this.$router.push({path:'/detail/maincontent/linto', query:{fields:'afib',page:1}});
     },
     linto_heartrate_btnDidClicked:function() {
       this.linto_bloodp_btn_active=false;
@@ -626,6 +673,7 @@ export default {
       this.linto_heartshake_btn_active=false;
       this.linto_heartrate_btn_active=true;
       this.linto_temp_btn_active=false;
+      this.$router.push({path:'/detail/maincontent/linto', query:{fields:'hr',page:1}});
     },
     linto_temp_btnDidClicked:function() {
       this.linto_bloodp_btn_active=false;
@@ -633,55 +681,105 @@ export default {
       this.linto_heartshake_btn_active=false;
       this.linto_heartrate_btn_active=false;
       this.linto_temp_btn_active=true;
+      this.$router.push({path:'/detail/maincontent/linto', query:{fields:'temper',page:1}});
     },
     handleCurrentPageChange:function(currentPage) {
       this.currentPage1 = currentPage;
       console.log('page:'+currentPage);
       console.log('query-fields:'+this.$route.query.fields);
-      if (this.$route.query.fields=='sbp') { // 血压
-        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp',page:currentPage}});
-        fetchDatas('sbp',currentPage)
-          .then(res => {
-            this.tableData = res;
-            console.log('tableData:'+this.tableData.length);
-          })
-          .catch(error => {
+      if (this.$route.params.id=='linto') {
+        if (this.$route.query.fields=='sbp') { // 血压
+          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'sbp',page:currentPage}});
+          fetchDatas_linto('sbp',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
 
-          })
-      }
-      else  if (this.$route.query.fields=='afib') {
-        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib',page:currentPage}});
-        fetchDatas('afib',currentPage)
-          .then(res => {
-            this.tableData = res;
-            console.log('tableData:'+this.tableData.length);
-          })
-          .catch(error => {
+            })
+        }
+        else  if (this.$route.query.fields=='afib') {
+          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'afib',page:currentPage}});
+          fetchDatas_linto('afib',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
 
-          })
-      }
-      else if (this.$route.query.fields=='pwv') {
-        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv',page:currentPage}});
-        fetchDatas('pwv',currentPage)
-          .then(res => {
-            this.tableData = res;
-            console.log('tableData:'+this.tableData.length);
-          })
-          .catch(error => {
+            })
+        }
+        else if (this.$route.query.fields=='pwv') {
+          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'pwv',page:currentPage}});
+          fetchDatas_linto('pwv',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
 
-          })
-      }
-      else if (this.$route.query.fields=='anb') {
-        this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:currentPage}});
-        fetchDatas('anb',currentPage)
-          .then(res => {
-            this.tableData = res;
-            console.log('tableData:'+this.tableData.length);
-          })
-          .catch(error => {
+            })
+        }
+        else if (this.$route.query.fields=='anb') {
+          this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:currentPage}});
+          fetchDatas('anb',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
 
-          })
+            })
+        }
       }
+      else {
+        if (this.$route.query.fields=='sbp') { // 血压
+          this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp',page:currentPage}});
+          fetchDatas('sbp',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else  if (this.$route.query.fields=='afib') {
+          this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib',page:currentPage}});
+          fetchDatas('afib',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else if (this.$route.query.fields=='pwv') {
+          this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv',page:currentPage}});
+          fetchDatas('pwv',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else if (this.$route.query.fields=='anb') {
+          this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:currentPage}});
+          fetchDatas('anb',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+      }
+
     },
     tipbtnMousemove:function() {
       console.log("------======------");
