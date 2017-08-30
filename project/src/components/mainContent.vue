@@ -710,9 +710,9 @@ export default {
 
             })
         }
-        else if (this.$route.query.fields=='pwv') {
-          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'pwv',page:currentPage}});
-          fetchDatas_linto('pwv',currentPage)
+        else if (this.$route.query.fields=='spo2h') {
+          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'spo2h',page:currentPage}});
+          fetchDatas_linto('spo2h',currentPage)
             .then(res => {
               this.tableData = res;
               console.log('tableData:'+this.tableData.length);
@@ -721,9 +721,20 @@ export default {
 
             })
         }
-        else if (this.$route.query.fields=='anb') {
-          this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:currentPage}});
-          fetchDatas('anb',currentPage)
+        else if (this.$route.query.fields=='hr') {
+          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'hr',page:currentPage}});
+          fetchDatas_linto('hr',currentPage)
+            .then(res => {
+              this.tableData = res;
+              console.log('tableData:'+this.tableData.length);
+            })
+            .catch(error => {
+
+            })
+        }
+        else if (this.$route.query.fields=='temper') {
+          this.$router.push({path:'/detail/maincontent/linto', query:{fields:'temper',page:currentPage}});
+          fetchDatas_linto('temper',currentPage)
             .then(res => {
               this.tableData = res;
               console.log('tableData:'+this.tableData.length);
@@ -798,6 +809,53 @@ export default {
       if (this.$route.params.id=='linto') { // linto接口进行网络请求
         this.watch_btn_active = false;
         this.linto_btn_active = true;
+        // 用来判定是 linto中的哪一个type
+        console.log('query-fields:'+this.$route.query.fields);
+        if (this.$route.query.fields=='sbp') { // 血压
+          this.linto_bloodp_btn_active=true;
+          this.linto_bloodo_btn_active=false;
+          this.linto_heartshake_btn_active=false;
+          this.linto_heartrate_btn_active=false;
+          this.linto_temp_btn_active=false;
+
+        }
+        else if (this.$route.query.fields=='afib') {
+          this.linto_bloodp_btn_active=false;
+          this.linto_bloodo_btn_active=false;
+          this.linto_heartshake_btn_active=true;
+          this.linto_heartrate_btn_active=false;
+          this.linto_temp_btn_active=false;
+        }
+        else if (this.$route.query.fields=='spo2h') {
+          this.linto_bloodp_btn_active=false;
+          this.linto_bloodo_btn_active=true;
+          this.linto_heartshake_btn_active=false;
+          this.linto_heartrate_btn_active=false;
+          this.linto_temp_btn_active=false;
+        }
+        else if (this.$route.query.fields=='hr') {
+          this.linto_bloodp_btn_active=false;
+          this.linto_bloodo_btn_active=false;
+          this.linto_heartshake_btn_active=false;
+          this.linto_heartrate_btn_active=true;
+          this.linto_temp_btn_active=false;
+        }
+        else if (this.$route.query.fields=='temper') {
+          this.linto_bloodp_btn_active=false;
+          this.linto_bloodo_btn_active=false;
+          this.linto_heartshake_btn_active=false;
+          this.linto_heartrate_btn_active=false;
+          this.linto_temp_btn_active=true;
+        }
+
+        fetchDatas_linto(this.$route.query.fields,this.$route.query.page)
+          .then(res => {
+            this.tableData = res;
+            console.log('tableData:'+this.tableData.length);
+          })
+          .catch(error => {
+
+          })
       }
       else {  // 量量接口进行网络请求
         this.watch_btn_active = true;
