@@ -96,7 +96,7 @@ export default {
     user_btnDidClicked:function() {
       this.main_btn_active = false;
       this.user_btn_active = true;
-      this.$router.push({path:'/detail/mainuser/watch',query:{page:5}});
+      this.$router.push({path:'/detail/mainuser/watch',query:{page:1}});
       console.log('user_btn did clicked');
     },
     dropdown_handleCommand:function(command) {
