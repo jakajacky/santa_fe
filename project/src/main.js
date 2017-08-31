@@ -61,6 +61,17 @@ const router = new VueRouter({
               resolve(require('./components/mainUser.vue'));
             });
           },
+          children:[
+            {// 动态路由
+              path: ':id',
+              name: 'watch',
+              component(resolve) {
+                require.ensure(['./components/mainUser.vue'], ()=>{
+                  resolve(require('./components/mainUser.vue'));
+                });
+              },
+            }
+          ]
         }
       ],
 

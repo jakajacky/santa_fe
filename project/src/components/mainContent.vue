@@ -87,7 +87,7 @@
         :current-page.sync="currentPage1"
         :page-size="8"
         layout="total, prev, pager, next"
-        :total="this.tableData.length+10">
+        :page-count="this.table_size">
       </el-pagination>
     </div>
 
@@ -465,7 +465,7 @@ var fetchDatas=function(type,page){
           //   type:'success'
           // });
 
-          res.data.shift();
+          // res.data.shift();
           console.log('list:'+res.data);
           resolve(res.data);
         }
@@ -507,7 +507,7 @@ var fetchDatas_linto=function(type,page){
           //   type:'success'
           // });
 
-          res.data.shift();
+          // res.data.shift();
           console.log('list:'+res.data);
           resolve(res.data);
         }
@@ -576,6 +576,7 @@ export default {
       dbp_num_100:0,
       dbp_num_60:0,
       tableData:[],
+      table_size:0,
     }
   },
   props: {
@@ -690,104 +691,122 @@ export default {
       if (this.$route.params.id=='linto') {
         if (this.$route.query.fields=='sbp') { // 血压
           this.$router.push({path:'/detail/maincontent/linto', query:{fields:'sbp',page:currentPage}});
-          fetchDatas_linto('sbp',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas_linto('sbp',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else  if (this.$route.query.fields=='afib') {
           this.$router.push({path:'/detail/maincontent/linto', query:{fields:'afib',page:currentPage}});
-          fetchDatas_linto('afib',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas_linto('afib',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else if (this.$route.query.fields=='spo2h') {
           this.$router.push({path:'/detail/maincontent/linto', query:{fields:'spo2h',page:currentPage}});
-          fetchDatas_linto('spo2h',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas_linto('spo2h',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else if (this.$route.query.fields=='hr') {
           this.$router.push({path:'/detail/maincontent/linto', query:{fields:'hr',page:currentPage}});
-          fetchDatas_linto('hr',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas_linto('hr',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else if (this.$route.query.fields=='temper') {
           this.$router.push({path:'/detail/maincontent/linto', query:{fields:'temper',page:currentPage}});
-          fetchDatas_linto('temper',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas_linto('temper',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
       }
       else {
         if (this.$route.query.fields=='sbp') { // 血压
           this.$router.push({path:'/detail/maincontent/watch', query:{fields:'sbp',page:currentPage}});
-          fetchDatas('sbp',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas('sbp',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else  if (this.$route.query.fields=='afib') {
           this.$router.push({path:'/detail/maincontent/watch', query:{fields:'afib',page:currentPage}});
-          fetchDatas('afib',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas('afib',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else if (this.$route.query.fields=='pwv') {
           this.$router.push({path:'/detail/maincontent/watch', query:{fields:'pwv',page:currentPage}});
-          fetchDatas('pwv',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas('pwv',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
         else if (this.$route.query.fields=='anb') {
           this.$router.push({path:'/detail/maincontent/watch', query:{fields:'anb',page:currentPage}});
-          fetchDatas('anb',currentPage)
-            .then(res => {
-              this.tableData = res;
-              console.log('tableData:'+this.tableData.length);
-            })
-            .catch(error => {
-
-            })
+          // fetchDatas('anb',currentPage)
+          //   .then(res => {
+          //     this.table_size = res[0].pagesize;
+          //     res.shift();
+          //     this.tableData = res;
+          //     console.log('tableData:'+this.tableData.length);
+          //   })
+          //   .catch(error => {
+          //
+          //   })
         }
       }
 
@@ -850,8 +869,11 @@ export default {
 
         fetchDatas_linto(this.$route.query.fields,this.$route.query.page)
           .then(res => {
+            this.table_size = res[0].pagesize;
+            res.shift();
             this.tableData = res;
             console.log('tableData:'+this.tableData.length);
+            this.currentPage1 = this.$route.query.page;
           })
           .catch(error => {
 
@@ -889,8 +911,11 @@ export default {
         }
         fetchDatas(this.$route.query.fields,this.$route.query.page)
           .then(res => {
+            this.table_size = res[0].pagesize;
+            res.shift();
             this.tableData = res;
             console.log('tableData:'+this.tableData.length);
+            this.currentPage1 = this.$route.query.page;
           })
           .catch(error => {
 
@@ -901,7 +926,111 @@ export default {
   watch: {
     '$route':'routerDidChanged'
   },
+  beforeCreate() {
+    // 用来判定 显示当前分页
+    this.currentPage1 = this.$route.query.page;
+
+    // 用来判定 watch还是linto
+    console.log('params-id:'+this.$route.params.id);
+    if (this.$route.params.id=='linto') { // linto接口进行网络请求
+      this.watch_btn_active = false;
+      this.linto_btn_active = true;
+      // 用来判定是 linto中的哪一个type
+      console.log('query-fields:'+this.$route.query.fields);
+      if (this.$route.query.fields=='sbp') { // 血压
+        this.linto_bloodp_btn_active=true;
+        this.linto_bloodo_btn_active=false;
+        this.linto_heartshake_btn_active=false;
+        this.linto_heartrate_btn_active=false;
+        this.linto_temp_btn_active=false;
+
+      }
+      else if (this.$route.query.fields=='afib') {
+        this.linto_bloodp_btn_active=false;
+        this.linto_bloodo_btn_active=false;
+        this.linto_heartshake_btn_active=true;
+        this.linto_heartrate_btn_active=false;
+        this.linto_temp_btn_active=false;
+      }
+      else if (this.$route.query.fields=='spo2h') {
+        this.linto_bloodp_btn_active=false;
+        this.linto_bloodo_btn_active=true;
+        this.linto_heartshake_btn_active=false;
+        this.linto_heartrate_btn_active=false;
+        this.linto_temp_btn_active=false;
+      }
+      else if (this.$route.query.fields=='hr') {
+        this.linto_bloodp_btn_active=false;
+        this.linto_bloodo_btn_active=false;
+        this.linto_heartshake_btn_active=false;
+        this.linto_heartrate_btn_active=true;
+        this.linto_temp_btn_active=false;
+      }
+      else if (this.$route.query.fields=='temper') {
+        this.linto_bloodp_btn_active=false;
+        this.linto_bloodo_btn_active=false;
+        this.linto_heartshake_btn_active=false;
+        this.linto_heartrate_btn_active=false;
+        this.linto_temp_btn_active=true;
+      }
+
+      fetchDatas_linto(this.$route.query.fields,this.$route.query.page)
+        .then(res => {
+          this.table_size = res[0].pagesize;
+          res.shift();
+          this.tableData = res;
+          console.log('tableData:'+this.tableData.length);
+          this.currentPage1 = this.$route.query.page;
+        })
+        .catch(error => {
+
+        })
+    }
+    else {  // 量量接口进行网络请求
+      this.watch_btn_active = true;
+      this.linto_btn_active = false;
+      // 用来判定是 watch中的哪一个type
+      console.log('query-fields:'+this.$route.query.fields);
+      if (this.$route.query.fields=='sbp') { // 血压
+        this.watch_bloodp_btn_active =true;
+        this.watch_heartshake_btn_active =false;
+        this.watch_pwv_btn_active = false;
+        this.watch_heartrate_btn_active = false;
+
+      }
+      else if (this.$route.query.fields=='afib') {
+        this.watch_bloodp_btn_active =false;
+        this.watch_heartshake_btn_active =true;
+        this.watch_pwv_btn_active = false;
+        this.watch_heartrate_btn_active = false;
+      }
+      else if (this.$route.query.fields=='pwv') {
+        this.watch_bloodp_btn_active =false;
+        this.watch_heartshake_btn_active =false;
+        this.watch_pwv_btn_active = true;
+        this.watch_heartrate_btn_active = false;
+      }
+      else if (this.$route.query.fields=='anb') {
+        this.watch_bloodp_btn_active =false;
+        this.watch_heartshake_btn_active =false;
+        this.watch_pwv_btn_active = false;
+        this.watch_heartrate_btn_active = true;
+      }
+      fetchDatas(this.$route.query.fields,this.$route.query.page)
+        .then(res => {
+          this.table_size = res[0].pagesize;
+          res.shift();
+          this.tableData = res;
+          console.log('tableData:'+this.tableData.length);
+          this.currentPage1 = this.$route.query.page;
+        })
+        .catch(error => {
+
+        })
+    }
+  },
   mounted() {
+    console.log('maincontent mounted');
     // 基于准备好的dom，初始化echarts实例
     var myChart_histogram = echarts.init(document.getElementById('user_bloodPresure_charts_id'));
     var myChart_histogram_ = echarts.init(document.getElementById('user_bloodPresure_charts_id_'));
@@ -911,10 +1040,6 @@ export default {
     myChart_histogram.setOption(option_histogram);
     myChart_histogram_.setOption(option_histogram_);
     myChart.setOption(option);
-
-
-    // 网络请求4
-    this.routerDidChanged();
 
     // 网络请求一
     let data = {

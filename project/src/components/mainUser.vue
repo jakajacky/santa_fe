@@ -5,6 +5,9 @@
     <div class="user_list_container">
       <div class="user_list_nav">
         <input type="button" value="[切换设备]"></input><span>脉搏波智能手表</span>
+        <el-input placeholder="" size="small" v-model="searchcontent" icon="search" :on-icon-click="handleIconClick">
+
+        </el-input>
       </div>
       <div class="margin-100">  </div>
       <el-table :data="tableData" stripe style="width: 100%;border-width:0px;">
@@ -14,7 +17,7 @@
           width="180">
         </el-table-column>
         <el-table-column
-          prop="create_date"
+          prop="age"
           label="年龄">
         </el-table-column>
         <el-table-column
@@ -22,27 +25,27 @@
           label="血压平均值">
         </el-table-column>
         <el-table-column
-          prop="dbp"
+          prop="sbplevel"
           label="血压程度">
         </el-table-column>
         <el-table-column
-          prop="sbp"
+          prop="pwv"
           label="PWV均值">
         </el-table-column>
         <el-table-column
-          prop="dbp"
+          prop="pwvlevel"
           label="PWV程度">
         </el-table-column>
         <el-table-column
-          prop="sbp"
+          prop="medihis"
           label="慢性病史">
         </el-table-column>
         <el-table-column
-          prop="dbp"
+          prop="is_afib"
           label="房颤">
         </el-table-column>
         <el-table-column
-          prop="dbp"
+          prop="count"
           label="数据量">
         </el-table-column>
         <el-table-column
@@ -60,11 +63,12 @@
       </el-table>
       <div class="margin-100">  </div>
       <el-pagination style="float:right;padding-right:20px;"
-        @current-change="handleCurrentPageChange"
-        :current-page.sync="currentPage1"
-        :page-size="8"
+        @current-change="handleCurrentPageChange_"
+        :current-page.sync="this.currentPage1_"
+        :page-size="10"
         layout="total, prev, pager, next"
-        :total="10">
+        :page-count="this.total_page"
+        :total="this.total_size">
       </el-pagination>
     </div>
 
@@ -78,12 +82,54 @@ import reques from './../request/Request.vue'
 import echarts from 'echarts'
 import axios from 'axios'
 import Tooltip from './Tooltip.vue'
+import {Message} from 'element-ui'
+
+var fetchDatas_user=function(page){
+  return new Promise((resolve,reject) => {
+    // 网络请求四
+    let data_4 = {
+      reg_id: page,
+    }
+    reques.fetch('/energon-new/web/research/users', data_4)
+      .then(res => {
+        console.log('success:'+res);
+        if (res.code != 10000) {
+          Message({
+            message:res.msg,
+            type:'warning'
+          });
+          reject(res.msg);
+        }
+        else {
+          // Message({
+          //   message:'加载成功',
+          //   type:'success'
+          // });
+          console.log('list:'+res.data);
+          resolve(res.data);
+        }
+      })
+      .catch(error => {
+        console.log('fail:'+error);
+        Message({
+          message:error.message,
+          type:'error'
+        });
+        reject(error);
+      })
+
+  });
+};
 
 export default {
   name: 'app',
   data () {
     return {
-      currentPage1:1,
+      currentPage1_:1,
+      searchcontent:'',
+      total_page:0,
+      total_size:0,
+      tableData:[],
     }
   },
   props: {
@@ -91,7 +137,63 @@ export default {
   },
   components: {Tooltip},
   methods: {
+    handleIconClick:function() {
+      console.log('search for:'+this.searchcontent);
+    },
+    handleCurrentPageChange_:function(currentPage_) {
+      console.log(currentPage_);
 
+      this.currentPage1_ = currentPage_;
+      this.$router.push({path:'/detail/mainuser/watch', query:{page:currentPage_}});
+      // this.routerDidChanged();
+    },
+    routerDidChanged_:function() {
+      // 判定 分页
+      this.currentPage1_ = this.$route.query.page;
+      // 网络请求
+      fetchDatas_user(this.currentPage1_)
+      .then(res => {
+        this.total_page = res[0].pagesize;
+        this.total_size = res[0].datasize;
+        console.log('total_page:'+this.total_page);
+        res.shift();
+        this.tableData = res;
+        console.log('tableData:'+this.tableData.length);
+      })
+      .catch(error => {
+
+      })
+    }
+  },
+  watch: {
+    '$route':'routerDidChanged_'
+  },
+  create() {
+    console.log('create mainuser.vue');
+
+  },
+  beforeCreate() {
+    console.log('beforeCreate mainuser.vue');
+    this.currentPage1_ = this.$route.query.page;
+    console.log('beforeCreate mainuser.vue:'+this.currentPage1_);
+    // this.routerDidChanged_();
+    fetchDatas_user(this.currentPage1_)
+    .then(res => {
+      this.total_page = res[0].pagesize;
+      this.total_size = res[0].datasize;
+      console.log('total_page:'+this.total_page);
+      res.shift();
+      this.tableData = res;
+      console.log('tableData:'+this.tableData.length);
+      this.currentPage1_ = this.$route.query.page;
+    })
+    .catch(error => {
+
+    })
+  },
+  mounted() {
+    console.log('mounted:'+this.$route.query.page);
+    // this.currentPage1_ = this.$route.query.page;
   }
 }
 </script>

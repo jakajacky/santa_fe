@@ -679,6 +679,12 @@ this.watch_heartrate_btn_active*/
   font-size: 17px;
   line-height: 45px;
 }
+.user_list_nav .el-input {
+  float: right;
+  width: 250px;
+  line-height: 48px;
+  margin-right: 20px;
+}
 
 .user .el-table {
   height: 525px;

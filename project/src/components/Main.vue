@@ -96,7 +96,8 @@ export default {
     user_btnDidClicked:function() {
       this.main_btn_active = false;
       this.user_btn_active = true;
-      this.$router.push({path:'/detail/mainuser'});
+      this.$router.push({path:'/detail/mainuser/watch',query:{page:5}});
+      console.log('user_btn did clicked');
     },
     dropdown_handleCommand:function(command) {
       this.$message({
@@ -116,7 +117,7 @@ export default {
   },
   mounted() {
     console.log('当前路径：'+this.$route.path);
-    if (this.$route.path=='/detail/mainuser') {
+    if (this.$route.path=='/detail/mainuser/watch' || this.$route.path=='/detail/mainuser/linto') {
       this.user_btn_active = true;
       this.main_btn_active = false;
     }
