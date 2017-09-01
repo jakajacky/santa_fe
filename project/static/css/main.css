@@ -99,7 +99,7 @@
 }
 .content_bg_user {
   background: #fff;
-  height: 650px;
+  height: 570px;
   width: 1200px;
   margin: 0 auto;
   padding-top: 20px;
@@ -657,8 +657,8 @@ this.watch_heartrate_btn_active*/
 /*下面是 mainuser.vue的css样式*/
 .user .user_list_container {
   margin: 0px 20px 0px 20px;
-  background: #ddd;
-  height: 630px;
+  background: #fff;
+  height: 550px;
   border: 1px solid #ddd;
 }
 
@@ -687,7 +687,12 @@ this.watch_heartrate_btn_active*/
 }
 
 .user .el-table {
-  height: 525px;
+  height: 443px;
+  border: 0px solid #fff;
+}
+
+.user .el-table::before {
+  width: 0px;
 }
 
 .margin-100 {
