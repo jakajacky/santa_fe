@@ -981,6 +981,44 @@ export default {
           this.tableData = res;
           console.log('tableData:'+this.tableData.length);
           this.currentPage1 = this.$route.query.page;
+          this.watch_btn_active = false;
+          this.linto_btn_active = true;
+          if (this.$route.query.fields=='sbp') { // 血压
+            this.linto_bloodp_btn_active=true;
+            this.linto_bloodo_btn_active=false;
+            this.linto_heartshake_btn_active=false;
+            this.linto_heartrate_btn_active=false;
+            this.linto_temp_btn_active=false;
+
+          }
+          else if (this.$route.query.fields=='afib') {
+            this.linto_bloodp_btn_active=false;
+            this.linto_bloodo_btn_active=false;
+            this.linto_heartshake_btn_active=true;
+            this.linto_heartrate_btn_active=false;
+            this.linto_temp_btn_active=false;
+          }
+          else if (this.$route.query.fields=='spo2h') {
+            this.linto_bloodp_btn_active=false;
+            this.linto_bloodo_btn_active=true;
+            this.linto_heartshake_btn_active=false;
+            this.linto_heartrate_btn_active=false;
+            this.linto_temp_btn_active=false;
+          }
+          else if (this.$route.query.fields=='hr') {
+            this.linto_bloodp_btn_active=false;
+            this.linto_bloodo_btn_active=false;
+            this.linto_heartshake_btn_active=false;
+            this.linto_heartrate_btn_active=true;
+            this.linto_temp_btn_active=false;
+          }
+          else if (this.$route.query.fields=='temper') {
+            this.linto_bloodp_btn_active=false;
+            this.linto_bloodo_btn_active=false;
+            this.linto_heartshake_btn_active=false;
+            this.linto_heartrate_btn_active=false;
+            this.linto_temp_btn_active=true;
+          }
         })
         .catch(error => {
 
@@ -1023,6 +1061,34 @@ export default {
           this.tableData = res;
           console.log('tableData:'+this.tableData.length);
           this.currentPage1 = this.$route.query.page;
+          this.watch_btn_active = true;
+          this.linto_btn_active = false;
+
+          if (this.$route.query.fields=='sbp') { // 血压
+            this.watch_bloodp_btn_active =true;
+            this.watch_heartshake_btn_active =false;
+            this.watch_pwv_btn_active = false;
+            this.watch_heartrate_btn_active = false;
+
+          }
+          else if (this.$route.query.fields=='afib') {
+            this.watch_bloodp_btn_active =false;
+            this.watch_heartshake_btn_active =true;
+            this.watch_pwv_btn_active = false;
+            this.watch_heartrate_btn_active = false;
+          }
+          else if (this.$route.query.fields=='pwv') {
+            this.watch_bloodp_btn_active =false;
+            this.watch_heartshake_btn_active =false;
+            this.watch_pwv_btn_active = true;
+            this.watch_heartrate_btn_active = false;
+          }
+          else if (this.$route.query.fields=='anb') {
+            this.watch_bloodp_btn_active =false;
+            this.watch_heartshake_btn_active =false;
+            this.watch_pwv_btn_active = false;
+            this.watch_heartrate_btn_active = true;
+          }
         })
         .catch(error => {
 
