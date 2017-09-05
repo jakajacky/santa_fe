@@ -704,12 +704,18 @@ this.watch_heartrate_btn_active*/
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__body {
   padding-top: 10px;
+  padding-bottom: 0px;
 }
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__body p {
   font-weight: bold;
   font-size: 14px;
   padding-bottom: 6px;
+}
+
+.user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__footer {
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .device_list {
@@ -726,30 +732,44 @@ this.watch_heartrate_btn_active*/
   border-bottom: 1px solid #ddd;
   padding-top: 10px;
   padding-bottom: 10px;
+  padding-left: 30px;
+
 }
 
-.watch img {
+.watch .icon {
   vertical-align: middle;
 }
 
-.watch span {
+.watch .title {
   vertical-align: middle;
+  margin-left: 200px;
+}
+
+.watch .el-button {
+  vertical-align: middle;
+  margin-left: 250px;
 }
 
 
 .linto {
   border-bottom: 1px solid #ddd;
-
+  padding-left: 30px;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
-.linto img {
+.linto .icon {
   vertical-align: middle;
 }
 
-.linto span {
+.linto .title {
   vertical-align: middle;
+  margin-left: 190px;
+}
+
+.linto .el-button {
+  vertical-align: middle;
+  margin-left: 250px;
 }
 
 .margin-100 {

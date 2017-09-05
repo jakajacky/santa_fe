@@ -11,20 +11,22 @@
           <ul class="device_list">
             <li>
               <div class="watch">
-                <img src="./../../static/img/watch.png">
-                <span>脉搏波智能手表</span>
-                <el-button type="primary" @click="dialogFormVisible = false">确定</el-button>
+                <img class="icon" src="./../../static/img/watch.png">
+                <span class="title">脉搏波智能手表</span>
+                <el-button type="text">选择<i class="el-icon-arrow-right el-icon--right"></i></el-button>
               </div>
             </li>
             <li>
               <div class="linto">
-                <img src="./../../static/img/linktop.png">
-                <span>多合一参数设备</span>
-                <el-button type="primary" @click="dialogFormVisible = false">确定</el-button>
+                <img class="icon" src="./../../static/img/linktop.png">
+                <span class="title">多合一参数设备</span>
+                <el-button type="text">选择<i class="el-icon-arrow-right el-icon--right"></i></el-button>
               </div>
             </li>
           </ul>
-
+          <div slot="footer" class="dialog-footer">
+            <span>更多慢性病监测设备正在接入...</span>
+          </div>
         </el-dialog>
         <el-input placeholder="" size="small" v-model="searchcontent" icon="search" :on-icon-click="handleIconClick">
 
