@@ -4,8 +4,9 @@
     <!-- 总数统计 -->
     <div class="user_list_container">
       <div class="user_list_nav">
-        <input type="button" value="[切换设备]" v-on:click="didDialogFormVisible"></input><span>脉搏波智能手表</span>
+        <input type="button" value="[切换设备]" v-on:click="didDialogFormVisible"></input><span class="nav_title">脉搏波智能手表</span>
         <el-dialog title="切换设备" :visible.sync="dialogFormVisible" size="small">
+          <el-button style="float:right;margin-right:20px;" type="primary">申请接入</el-button>
           <p>亲爱的用户您好：</p>
           <p>切换设备，对用户进行精准分类：</p>
           <ul class="device_list">
@@ -25,7 +26,7 @@
             </li>
           </ul>
           <div slot="footer" class="dialog-footer">
-            <span>更多慢性病监测设备正在接入...</span>
+            <span class="footer_title">更多慢性病监测设备正在接入...</span>
           </div>
         </el-dialog>
         <el-input placeholder="" size="small" v-model="searchcontent" icon="search" :on-icon-click="handleIconClick">

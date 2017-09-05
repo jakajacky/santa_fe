@@ -675,7 +675,7 @@ this.watch_heartrate_btn_active*/
 
 }
 
-.user_list_nav span {
+.user_list_nav .nav_title {
   font-size: 17px;
   line-height: 45px;
 }
@@ -695,6 +695,9 @@ this.watch_heartrate_btn_active*/
   width: 0px;
 }
 
+.user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small {
+  background-color: #ddd;
+}
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__header .el-dialog__title {
   color: #55c7f6;
@@ -703,14 +706,22 @@ this.watch_heartrate_btn_active*/
 }
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__body {
-  padding-top: 10px;
+  padding-top: 25px;
   padding-bottom: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__body p {
   font-weight: bold;
   font-size: 14px;
-  padding-bottom: 6px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+}
+
+.user_list_nav .el-dialog__body .el-button.el-button--primary {
+  background-color: #55c7f6;
+  border-color: #55c7f6;
 }
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__footer {
@@ -718,12 +729,15 @@ this.watch_heartrate_btn_active*/
   padding-bottom: 0px;
 }
 
-.device_list {
-
+.user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__footer .footer_title {
+  line-height: 45px;
 }
 
 .device_list li {
   display: block;
+  background-color: #fff;
+  margin-left: 0px;
+  margin-right: 0px;
   /*width: 100%;*/
 }
 
@@ -733,7 +747,7 @@ this.watch_heartrate_btn_active*/
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 30px;
-
+  background-color: #fff;
 }
 
 .watch .icon {
@@ -742,12 +756,12 @@ this.watch_heartrate_btn_active*/
 
 .watch .title {
   vertical-align: middle;
-  margin-left: 200px;
+  margin-left: 220px;
 }
 
 .watch .el-button {
   vertical-align: middle;
-  margin-left: 250px;
+  margin-left: 330px;
 }
 
 
@@ -764,12 +778,12 @@ this.watch_heartrate_btn_active*/
 
 .linto .title {
   vertical-align: middle;
-  margin-left: 190px;
+  margin-left: 210px;
 }
 
 .linto .el-button {
   vertical-align: middle;
-  margin-left: 250px;
+  margin-left: 330px;
 }
 
 .margin-100 {
