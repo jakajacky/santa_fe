@@ -696,7 +696,7 @@ this.watch_heartrate_btn_active*/
 }
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small {
-  background-color: #ddd;
+  background-color: #f4f5fa;
 }
 
 .user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__header .el-dialog__title {
