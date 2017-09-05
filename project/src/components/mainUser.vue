@@ -5,14 +5,26 @@
     <div class="user_list_container">
       <div class="user_list_nav">
         <input type="button" value="[切换设备]" v-on:click="didDialogFormVisible"></input><span>脉搏波智能手表</span>
-        <el-dialog id="dialog" title="切换设备" :visible.sync="dialogFormVisible" size='tiny'>
+        <el-dialog title="切换设备" :visible.sync="dialogFormVisible" size="small">
           <p>亲爱的用户您好：</p>
           <p>切换设备，对用户进行精准分类：</p>
+          <ul class="device_list">
+            <li>
+              <div class="watch">
+                <img src="./../../static/img/watch.png">
+                <span>脉搏波智能手表</span>
+                <el-button type="primary" @click="dialogFormVisible = false">确定</el-button>
+              </div>
+            </li>
+            <li>
+              <div class="linto">
+                <img src="./../../static/img/linktop.png">
+                <span>多合一参数设备</span>
+                <el-button type="primary" @click="dialogFormVisible = false">确定</el-button>
+              </div>
+            </li>
+          </ul>
 
-          <div slot="footer" class="dialog-footer">
-            <el-button @click="dialogFormVisible = false">取 消</el-button>
-            <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-          </div>
         </el-dialog>
         <el-input placeholder="" size="small" v-model="searchcontent" icon="search" :on-icon-click="handleIconClick">
 
@@ -211,7 +223,7 @@ export default {
 }
 </script>
 
-<style scoped src='./../../static/css/main.css'>
+<style src='./../../static/css/main.css'>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -246,15 +258,6 @@ a {
 
 #tip {
   text-align: center;
-}
-
-.user_list_nav .el-dialog__header {
-  background-color: #55c7f6;
-}
-
-.user_list_nav .el-dialog__title {
-  background-color: #55c7f6;
-  background: #f66;
 }
 
 /*.login_logo{width:1200px;height:88px;margin:0 auto;background:#fff url(./../../static/img/indexlogo.png) 0 center no-repeat;}

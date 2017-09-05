@@ -695,17 +695,61 @@ this.watch_heartrate_btn_active*/
   width: 0px;
 }
 
-.user_list_nav .el-dialog {
-  background-color: #55c7f6;
+
+.user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__header .el-dialog__title {
+  color: #55c7f6;
+  font-size: 25px;
+  text-align: center;
 }
 
-.user_list_nav .el-dialog__header {
-  background-color: #55c7f6;
+.user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__body {
+  padding-top: 10px;
 }
 
-.user_list_nav #dialog .el-dialog__title {
-  background-color: #55c7f6;
-  background: #f66;
+.user_list_nav .el-dialog__wrapper .el-dialog.el-dialog--small .el-dialog__body p {
+  font-weight: bold;
+  font-size: 14px;
+  padding-bottom: 6px;
+}
+
+.device_list {
+
+}
+
+.device_list li {
+  display: block;
+  /*width: 100%;*/
+}
+
+.watch {
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.watch img {
+  vertical-align: middle;
+}
+
+.watch span {
+  vertical-align: middle;
+}
+
+
+.linto {
+  border-bottom: 1px solid #ddd;
+
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.linto img {
+  vertical-align: middle;
+}
+
+.linto span {
+  vertical-align: middle;
 }
 
 .margin-100 {
